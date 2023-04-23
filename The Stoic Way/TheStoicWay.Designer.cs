@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TheStoicWay));
+            SuspendLayout();
+            // 
+            // TheStoicWay
+            // 
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Text = "Form1";
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Name = "TheStoicWay";
+            FormClosing += TheStoicWay_FormClosing;
+            Load += TheStoicWay_Load;
+            ResumeLayout(false);
         }
 
         #endregion

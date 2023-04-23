@@ -1,3 +1,5 @@
+using System.Timers;
+
 namespace The_Stoic_Way
 {
     internal static class Program
@@ -13,5 +15,8 @@ namespace The_Stoic_Way
             ApplicationConfiguration.Initialize();
             Application.Run(new TheStoicWay());
         }
+
+
+
     }
 }
