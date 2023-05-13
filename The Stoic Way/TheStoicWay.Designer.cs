@@ -35,7 +35,8 @@
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            FormBorderStyle = FormBorderStyle.Fixed3D;
+            BackColor = Color.DimGray;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "TheStoicWay";
             FormClosing += TheStoicWay_FormClosing;
             Load += TheStoicWay_Load;
