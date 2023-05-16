@@ -11,7 +11,10 @@ namespace The_Stoic_Way
 {
     internal class Quote
     {
+        [JsonProperty("Text")]
         public string Text { get; set; }
+
+        [JsonProperty("Author")]
         public string Author { get; set; }
 
         public Quote(string author, string text)

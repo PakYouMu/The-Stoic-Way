@@ -31,25 +31,24 @@ namespace The_Stoic_Way
             //Open at machine start-up
 
             //Get quotes from JSON
-
-            string folderName = "data";
-            string fileName = "quotes.json";
-            string pathName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, folderName, fileName);
-
+            string pathName = "..\\..\\..\\data\\quotes.json";
+            string file = File.ReadAllText(pathName);
             try
             {
-                List<Quote> quotes = JsonConvert.DeserializeObject<List<Quote>>(File.ReadAllText(pathName));
-
+                dynamic quotes = JsonConvert.DeserializeObject<List<Quote>>(file);
                 Random random = new Random();
-                Quote quote = quotes[random.Next(quotes.Count)];
-                MessageBox.Show(quote.Text + quote.Author);
+                int randomIndex = random.Next(quotes.Count);
+                //showing on MessageBox for testing purposes only
+                MessageBox.Show(quotes[randomIndex].Text + "\n- " + quotes[randomIndex].Author);
+
+                //show text on the middle of the form
             }
-            catch (FileNotFoundException nfex)
+            catch (FileNotFoundException ex)
             {
-                if(!File.Exists(pathName))
+                if (!File.Exists(pathName))
                 {
-                    MessageBox.Show("File Does Not Exist\n" + nfex.ToString());
-                    Console.Write(nfex.ToString());
+                    MessageBox.Show("File Does Not Exist\n" + ex.ToString());
+                    Console.Write(ex.ToString());
                     Environment.Exit(0);
                 }
             }
@@ -60,7 +59,35 @@ namespace The_Stoic_Way
                 Environment.Exit(0);
             }
 
+            //Start a pomodoro timer after displaying the quote
+
+
         }
+
+        //can be used in a later patch
+        /*private string GetInstallPathFromRegistry()
+        {
+            // Open the registry key that contains the installation path
+            RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\MyApplication\\AppPath");
+
+            // Check if the key exists
+            if (key != null)
+            {
+                // Get the value of the "Installed" entry
+                string installPath = (string)key.GetValue("Installed");
+
+                // Close the key
+                key.Close();
+
+                // Return the installation path
+                return installPath;
+            }
+            else
+            {
+                // Return null if the key does not exist
+                return null;
+            }
+        }*/
 
         private void TheStoicWay_FormClosing(object sender, FormClosingEventArgs e)
         {
