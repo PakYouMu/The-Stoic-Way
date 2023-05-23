@@ -29,20 +29,43 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TheStoicWay));
+            pictureBox1 = new PictureBox();
+            richTextBox1 = new RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = Properties.Resources.wall_clock__1_;
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.TabStop = false;
+            // 
+            // richTextBox1
+            // 
+            resources.ApplyResources(richTextBox1, "richTextBox1");
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.TextChanged += richTextBox1_TextChanged;
             // 
             // TheStoicWay
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DimGray;
+            BackColor = Color.FromArgb(121, 81, 169);
+            Controls.Add(richTextBox1);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "TheStoicWay";
             FormClosing += TheStoicWay_FormClosing;
             Load += TheStoicWay_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
+        private PictureBox pictureBox1;
+        private RichTextBox richTextBox1;
     }
 }

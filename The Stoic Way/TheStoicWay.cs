@@ -42,6 +42,7 @@ namespace The_Stoic_Way
                 MessageBox.Show(quotes[randomIndex].Text + "\n- " + quotes[randomIndex].Author);
 
                 //show text on the middle of the form
+
             }
             catch (FileNotFoundException ex)
             {
@@ -58,10 +59,6 @@ namespace The_Stoic_Way
                 Console.WriteLine(ex.ToString());
                 Environment.Exit(0);
             }
-
-            //Start a pomodoro timer after displaying the quote
-
-
         }
 
         //can be used in a later patch
@@ -95,6 +92,11 @@ namespace The_Stoic_Way
             {
                 e.Cancel = true;
             }
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
