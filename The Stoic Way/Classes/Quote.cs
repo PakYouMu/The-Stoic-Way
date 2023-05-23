@@ -7,7 +7,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace The_Stoic_Way
+namespace The_Stoic_Way.Classes
 {
     internal class Quote
     {
@@ -22,7 +22,7 @@ namespace The_Stoic_Way
             Text = text;
             Author = author;
         }
-        
+
         //Unsure yet
         /*public static List<Quote>? GetQuotes(string pathName)
         {

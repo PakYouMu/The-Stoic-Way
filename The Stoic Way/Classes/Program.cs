@@ -1,6 +1,6 @@
 using System.Timers;
 
-namespace The_Stoic_Way
+namespace The_Stoic_Way.Classes
 {
     internal static class Program
     {
