@@ -95,7 +95,7 @@ namespace The_Stoic_Way
             }
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
