@@ -22,22 +22,5 @@ namespace The_Stoic_Way.Classes
             Text = text;
             Author = author;
         }
-
-        //Unsure yet
-        /*public static List<Quote>? GetQuotes(string pathName)
-        {
-            List<Quote> quotes = new List<Quote>();
-            try
-            {
-                quotes = JsonConvert.DeserializeObject<List<Quote>>(File.ReadAllText(pathName));
-                return quotes;
-            }
-            catch (Exception ex)
-            {
-                if(quotes == null)
-                    MessageBox.Show("There Are No Quotes!" + ex.Message);
-                return null;
-            }
-        }*/
     }
 }

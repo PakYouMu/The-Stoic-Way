@@ -39,53 +39,27 @@ namespace The_Stoic_Way
                 dynamic quotes = JsonConvert.DeserializeObject<List<Quote>>(file);
                 Random random = new Random();
                 int randomIndex = random.Next(quotes.Count);
-                //showing on MessageBox for testing purposes only
-                MessageBox.Show(quotes[randomIndex].Text + "\n- " + quotes[randomIndex].Author);
 
                 //show text on the middle of the form
-
+                QuoteLabel.ForeColor = Color.FromArgb(47, 49, 48);
+                QuoteLabel.Text = quotes[randomIndex].Text + "\n — " + quotes[randomIndex].Author;
             }
             catch (FileNotFoundException ex)
             {
                 if (!File.Exists(pathName))
                 {
-                    MessageBox.Show("File Does Not Exist\n" + ex.ToString());
+                    MessageBox.Show("File Does Not Exist\n\n" + ex.ToString());
                     Console.Write(ex.ToString());
                     Environment.Exit(0);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Unexpected Error\n" + ex.ToString());
+                MessageBox.Show("Unexpected Error\n\n" + ex.ToString());
                 Console.WriteLine(ex.ToString());
                 Environment.Exit(0);
             }
         }
-
-        //can be used in a later patch
-        /*private string GetInstallPathFromRegistry()
-        {
-            // Open the registry key that contains the installation path
-            RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\MyApplication\\AppPath");
-
-            // Check if the key exists
-            if (key != null)
-            {
-                // Get the value of the "Installed" entry
-                string installPath = (string)key.GetValue("Installed");
-
-                // Close the key
-                key.Close();
-
-                // Return the installation path
-                return installPath;
-            }
-            else
-            {
-                // Return null if the key does not exist
-                return null;
-            }
-        }*/
 
         private void TheStoicWay_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -94,10 +68,30 @@ namespace The_Stoic_Way
                 e.Cancel = true;
             }
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+
+//can be used in a later patch
+/*private string GetInstallPathFromRegistry()
+{
+    // Open the registry key that contains the installation path
+    RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\MyApplication\\AppPath");
+
+    // Check if the key exists
+    if (key != null)
+    {
+        // Get the value of the "Installed" entry
+        string installPath = (string)key.GetValue("Installed");
+
+        // Close the key
+        key.Close();
+
+        // Return the installation path
+        return installPath;
+    }
+    else
+    {
+        // Return null if the key does not exist
+        return null;
+    }
+}*/

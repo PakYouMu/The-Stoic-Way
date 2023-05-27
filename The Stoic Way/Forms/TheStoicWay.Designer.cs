@@ -30,9 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TheStoicWay));
             TimerButton = new PictureBox();
-            pictureBox1 = new PictureBox();
+            QuoteLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)TimerButton).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // TimerButton
@@ -42,33 +41,30 @@
             TimerButton.BackgroundImage = Properties.Resources.wall_clock__1_;
             TimerButton.Name = "TimerButton";
             TimerButton.TabStop = false;
-            TimerButton.Click += pictureBox1_Click;
             // 
-            // pictureBox1
+            // QuoteLabel
             // 
-            resources.ApplyResources(pictureBox1, "pictureBox1");
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.TabStop = false;
+            resources.ApplyResources(QuoteLabel, "QuoteLabel");
+            QuoteLabel.Name = "QuoteLabel";
             // 
             // TheStoicWay
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(121, 81, 169);
-            Controls.Add(pictureBox1);
+            BackColor = Color.FromArgb(147, 159, 135);
+            Controls.Add(QuoteLabel);
             Controls.Add(TimerButton);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "TheStoicWay";
             FormClosing += TheStoicWay_FormClosing;
             Load += TheStoicWay_Load;
             ((System.ComponentModel.ISupportInitialize)TimerButton).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private PictureBox TimerButton;
-        private PictureBox pictureBox1;
+        private Label QuoteLabel;
     }
 }
