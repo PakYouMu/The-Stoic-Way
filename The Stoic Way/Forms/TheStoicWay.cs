@@ -18,18 +18,24 @@ namespace The_Stoic_Way
 {
     public partial class TheStoicWay : Form
     {
-
+        private int confirmationCount = 0;
 
         public TheStoicWay()
         {
             InitializeComponent();
         }
 
+        //private list for exit confirmation messages
+        private List<string> confirmationMessages = new List<string>
+        {
+            "Are you sure you want to quit?",
+            "Are you really sure?",
+            "Okay, Bye"
+        };
+
         private void TheStoicWay_Load(object sender, EventArgs e)
         {
             //OpenAI_API is too complicated, will come back to it after main features have been implemented; for now, abandoning this feature due to complexity and lack of understanding
-
-            //Open at machine start-up
 
             //Get quotes from JSON
             string pathName = "..\\..\\..\\data\\quotes.json";
@@ -50,23 +56,42 @@ namespace The_Stoic_Way
                 {
                     MessageBox.Show("File Does Not Exist\n\n" + ex.ToString());
                     Console.Write(ex.ToString());
-                    Environment.Exit(0);
+                    Application.Exit();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Unexpected Error\n\n" + ex.ToString());
                 Console.WriteLine(ex.ToString());
-                Environment.Exit(0);
+                Application.Exit();
             }
         }
 
         private void TheStoicWay_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason != CloseReason.ApplicationExitCall && e.CloseReason != CloseReason.WindowsShutDown)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
-                e.Cancel = true;
+                if (confirmationCount < confirmationMessages.Count)
+                {
+                    DialogResult result = MessageBox.Show(confirmationMessages[confirmationCount], "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.No)
+                    {
+                        confirmationCount = 0;
+                        e.Cancel = true;
+                    }
+                    else
+                    {
+                        confirmationCount++;
+
+                        if (confirmationCount == confirmationMessages.Count)
+                            Application.Exit(); // This is the last confirmation, close the application
+                        else
+                            e.Cancel = true;
+                    }
+                }
             }
+
         }
     }
 }

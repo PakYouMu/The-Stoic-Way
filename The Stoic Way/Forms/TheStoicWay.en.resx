@@ -63,7 +63,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="TimerButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 11</value>
+    <value>11, 11</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="TimerButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -79,7 +79,7 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="QuoteLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 222</value>
+    <value>500, 222</value>
   </data>
   <data name="QuoteLabel.Text" xml:space="preserve">
     <value>Lorem Ipsum</value>
@@ -94,13 +94,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>529, 275</value>
+    <value>524, 275</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Lucida Bright, 9pt</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
