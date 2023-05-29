@@ -13,12 +13,17 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using The_Stoic_Way.Classes;
+using System.Reflection.Emit;
+using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace The_Stoic_Way
 {
     public partial class TheStoicWay : Form
     {
         private int confirmationCount = 0;
+        private TimeSpan duration;
+        private TimeSpan elapsedTime;
 
         public TheStoicWay()
         {
@@ -93,6 +98,86 @@ namespace The_Stoic_Way
             }
 
         }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            // Reset the form to its initial state
+            WorkTimer.Enabled = true;
+            RestTimer.Enabled = true;
+            WorkTimer.Text = "00:00:00";
+            RestTimer.Text = "00:00:00";
+            WorkTime.Text = "00:00:00";
+            RestTime.Text = "00:00:00";
+            elapsedTime = TimeSpan.Zero;
+            WorkTimer.Text = "00:00:00";
+        }
+
+        /*
+private void startButton_Click(object sender, EventArgs e)
+{
+  string input = maskedTextBox.Text;
+
+  if (IsValidTimeInput(input))
+  {
+      // Parse the input and calculate the total duration
+      int hours = int.Parse(input.Substring(0, 2));
+      int minutes = int.Parse(input.Substring(3, 2));
+      int seconds = int.Parse(input.Substring(6, 2));
+      duration = new TimeSpan(hours, minutes, seconds);
+
+      // Disable the MaskedTextBox and Start button while the countdown is running
+      maskedTextBox.Enabled = false;
+      startButton.Enabled = false;
+
+      // Start the countdown timer
+      timer.Interval = 1000; // 1 second
+      timer.Tick += Timer_Tick;
+      timer.Start();
+  }
+  else
+  {
+      MessageBox.Show("Invalid time format. Please enter the time in the format of hours:minutes:seconds.");
+  }
+}
+
+private bool IsValidTimeInput(string input)
+{
+  // Validate the input against the desired time format
+  Regex regex = new Regex(@"^\d{2}:\d{2}:\d{2}$");
+  return regex.IsMatch(input);
+}
+
+private void Timer_Tick(object sender, EventArgs e)
+{
+  // Update the remaining time label
+  elapsedTime = elapsedTime.Add(TimeSpan.FromSeconds(1));
+  TimeSpan remainingTime = duration - elapsedTime;
+
+  if (remainingTime.TotalSeconds <= 0)
+  {
+      // Countdown complete
+      timer.Stop();
+      MessageBox.Show("Countdown complete!");
+      ResetForm();
+  }
+  else
+  {
+      label.Text = $"Time Remaining: {remainingTime.Hours:D2}:{remainingTime.Minutes:D2}:{remainingTime.Seconds:D2}";
+  }
+}
+
+private void ResetForm()
+{
+  // Reset the form to its initial state
+  maskedTextBox.Enabled = true;
+  startButton.Enabled = true;
+  maskedTextBox.Text = "00:00:00";
+  elapsedTime = TimeSpan.Zero;
+  label.Text = "Time Remaining: 00:00:00";
+}
+
+*/
+
     }
 }
 
@@ -104,7 +189,7 @@ namespace The_Stoic_Way
 
     // Check if the key exists
     if (key != null)
-    {
+    { 147, 159, 135
         // Get the value of the "Installed" entry
         string installPath = (string)key.GetValue("Installed");
 
