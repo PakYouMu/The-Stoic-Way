@@ -16,6 +16,9 @@ using The_Stoic_Way.Classes;
 using System.Reflection.Emit;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Microsoft.VisualBasic.ApplicationServices;
+using OpenAI_API.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace The_Stoic_Way
 {
@@ -38,9 +41,23 @@ namespace The_Stoic_Way
             "Okay, Bye"
         };
 
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_SYSCOMMAND = 0x0112;
+            const int SC_MINIMIZE = 0xF020;
+            const int SC_MAXIMIZE = 0xF030; // come back to this later and create it such as like FormClosing
+
+            if (m.Msg == WM_SYSCOMMAND && (m.WParam == (IntPtr)SC_MINIMIZE || m.WParam == (IntPtr)SC_MAXIMIZE))
+                return; // Ignore the minimize and maximize system commands
+
+            base.WndProc(ref m);
+        }
+
         private void TheStoicWay_Load(object sender, EventArgs e)
         {
             //OpenAI_API is too complicated, will come back to it after main features have been implemented; for now, abandoning this feature due to complexity and lack of understanding
+            //set up
+            this.MaximizeBox = false;
 
             //Get quotes from JSON
             string pathName = "..\\..\\..\\data\\quotes.json";
@@ -71,7 +88,6 @@ namespace The_Stoic_Way
                 Application.Exit();
             }
         }
-
         private void TheStoicWay_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -79,7 +95,6 @@ namespace The_Stoic_Way
                 if (confirmationCount < confirmationMessages.Count)
                 {
                     DialogResult result = MessageBox.Show(confirmationMessages[confirmationCount], "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
                     if (result == DialogResult.No)
                     {
                         confirmationCount = 0;

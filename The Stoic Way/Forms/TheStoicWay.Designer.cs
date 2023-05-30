@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TheStoicWay));
-            TimerButton = new PictureBox();
             QuoteLabel = new Label();
             ResetButton = new PictureBox();
             PauseButton = new PictureBox();
@@ -40,19 +39,14 @@
             RestTimeLabel = new Label();
             WorkTime = new Label();
             RestTime = new Label();
-            ((System.ComponentModel.ISupportInitialize)TimerButton).BeginInit();
+            WorkButton = new PictureBox();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)ResetButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PauseButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)RestButton).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)WorkButton).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // TimerButton
-            // 
-            resources.ApplyResources(TimerButton, "TimerButton");
-            TimerButton.BackColor = Color.Transparent;
-            TimerButton.BackgroundImage = Properties.Resources.alarm_clock__1_;
-            TimerButton.Name = "TimerButton";
-            TimerButton.TabStop = false;
             // 
             // QuoteLabel
             // 
@@ -111,11 +105,27 @@
             resources.ApplyResources(RestTime, "RestTime");
             RestTime.Name = "RestTime";
             // 
+            // WorkButton
+            // 
+            resources.ApplyResources(WorkButton, "WorkButton");
+            WorkButton.BackgroundImage = Properties.Resources.alarm_clock__1_;
+            WorkButton.Name = "WorkButton";
+            WorkButton.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.BackgroundImage = Properties.Resources.The_Stoic_Way_Base__1_;
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.TabStop = false;
+            // 
             // TheStoicWay
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(147, 159, 135);
+            Controls.Add(pictureBox1);
+            Controls.Add(WorkButton);
             Controls.Add(RestTime);
             Controls.Add(WorkTime);
             Controls.Add(RestTimeLabel);
@@ -126,23 +136,21 @@
             Controls.Add(PauseButton);
             Controls.Add(ResetButton);
             Controls.Add(QuoteLabel);
-            Controls.Add(TimerButton);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "TheStoicWay";
             SizeGripStyle = SizeGripStyle.Show;
             FormClosing += TheStoicWay_FormClosing;
             Load += TheStoicWay_Load;
-            ((System.ComponentModel.ISupportInitialize)TimerButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)ResetButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)PauseButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)RestButton).EndInit();
+            ((System.ComponentModel.ISupportInitialize)WorkButton).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox TimerButton;
         private Label QuoteLabel;
         private PictureBox ResetButton;
         private PictureBox PauseButton;
@@ -153,5 +161,7 @@
         private Label RestTimeLabel;
         private Label WorkTime;
         private Label RestTime;
+        private PictureBox WorkButton;
+        private PictureBox pictureBox1;
     }
 }
