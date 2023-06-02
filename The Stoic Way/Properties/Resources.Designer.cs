@@ -93,9 +93,49 @@ namespace The_Stoic_Way.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap The_Stoic_Way_Base {
+            get {
+                object obj = ResourceManager.GetObject("The Stoic Way Base", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap The_Stoic_Way_Base__1_ {
             get {
                 object obj = ResourceManager.GetObject("The Stoic Way Base (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Stoic_Way_Base__1_1 {
+            get {
+                object obj = ResourceManager.GetObject("The Stoic Way Base (1)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Stoic_Way_Base__1_2 {
+            get {
+                object obj = ResourceManager.GetObject("The Stoic Way Base (1)2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap The_Stoic_Way_Logo {
+            get {
+                object obj = ResourceManager.GetObject("The Stoic Way Logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

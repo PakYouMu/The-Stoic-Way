@@ -69,10 +69,14 @@
     <value>NoControl</value>
   </data>
   <data name="QuoteLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 62</value>
+    <value>19, 87</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="QuoteLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 5, 0</value>
   </data>
   <data name="QuoteLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>500, 214</value>
+    <value>786, 300</value>
   </data>
   <data name="QuoteLabel.Text" xml:space="preserve">
     <value>Lorem Ipsum</value>
@@ -81,56 +85,116 @@
     <value>MiddleCenter</value>
   </data>
   <data name="ResetButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>480, 217</value>
+    <value>659, 318</value>
+  </data>
+  <data name="ResetButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 4, 5, 4</value>
+  </data>
+  <data name="ResetButton.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="ResetButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
   </data>
   <data name="ResetButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
   </data>
+  <data name="ResetButton.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
+  </data>
   <data name="PauseButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 218</value>
+    <value>61, 316</value>
+  </data>
+  <data name="PauseButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 4, 5, 4</value>
+  </data>
+  <data name="PauseButton.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="PauseButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
   </data>
   <data name="PauseButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 31</value>
+    <value>32, 32</value>
   </data>
-  <data name="WorkTimer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 227</value>
+  <data name="PauseButton.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
   </data>
-  <data name="WorkTimer.Mask" xml:space="preserve">
+  <data name="WorkTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 346</value>
+  </data>
+  <data name="WorkTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 4, 5, 4</value>
+  </data>
+  <data name="WorkTime.Mask" xml:space="preserve">
     <value>90:00:00</value>
   </data>
-  <data name="WorkTimer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 22</value>
+  <data name="WorkTime.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>87, 29</value>
   </data>
-  <data name="WorkTimer.Text" xml:space="preserve">
+  <data name="WorkTime.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>87, 29</value>
+  </data>
+  <data name="WorkTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 29</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="WorkTime.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="WorkTime.Text" xml:space="preserve">
     <value>000000</value>
   </data>
   <data name="RestButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>379, 218</value>
+    <value>617, 318</value>
+  </data>
+  <data name="RestButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 4, 5, 4</value>
+  </data>
+  <data name="RestButton.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="RestButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
   </data>
   <data name="RestButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
   </data>
-  <data name="RestTimer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>417, 226</value>
+  <data name="RestButton.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
   </data>
-  <data name="RestTimer.Mask" xml:space="preserve">
+  <data name="RestTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>718, 346</value>
+  </data>
+  <data name="RestTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 4, 5, 4</value>
+  </data>
+  <data name="RestTime.Mask" xml:space="preserve">
     <value>90:00:00</value>
   </data>
-  <data name="RestTimer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 22</value>
+  <data name="RestTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 29</value>
   </data>
-  <data name="RestTimer.Text" xml:space="preserve">
+  <data name="RestTime.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="RestTime.Text" xml:space="preserve">
     <value>000000</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="WorkTimeLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="WorkTimeLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Lucida Bright, 10pt</value>
   </data>
+  <data name="WorkTimeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 352</value>
+  </data>
+  <data name="WorkTimeLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 5, 0</value>
+  </data>
   <data name="WorkTimeLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 16</value>
+    <value>99, 23</value>
   </data>
   <data name="WorkTimeLabel.Text" xml:space="preserve">
     <value>Work For</value>
@@ -144,8 +208,14 @@
   <data name="RestTimeLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Lucida Bright, 10pt</value>
   </data>
+  <data name="RestTimeLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>617, 352</value>
+  </data>
+  <data name="RestTimeLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 5, 0</value>
+  </data>
   <data name="RestTimeLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 16</value>
+    <value>91, 23</value>
   </data>
   <data name="RestTimeLabel.Text" xml:space="preserve">
     <value>Rest For</value>
@@ -153,77 +223,62 @@
   <data name="RestTimeLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="WorkTime.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="WorkTime.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Lucida Bright, 10pt</value>
-  </data>
-  <data name="WorkTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 251</value>
-  </data>
-  <data name="WorkTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 16</value>
-  </data>
-  <data name="WorkTime.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="WorkTime.Text" xml:space="preserve">
-    <value>00:00:00</value>
-  </data>
-  <data name="WorkTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
-  <data name="RestTime.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="RestTime.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Lucida Bright, 10pt</value>
-  </data>
-  <data name="RestTime.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="RestTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>445, 251</value>
-  </data>
-  <data name="RestTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 16</value>
-  </data>
-  <data name="RestTime.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="RestTime.Text" xml:space="preserve">
-    <value>00:00:00</value>
-  </data>
-  <data name="RestTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
-  </data>
   <data name="WorkButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="WorkButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>19, 316</value>
+  </data>
+  <data name="WorkButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 4, 5, 4</value>
+  </data>
+  <data name="WorkButton.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="WorkButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
   <data name="WorkButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 31</value>
+    <value>32, 32</value>
   </data>
-  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 10</value>
+  <data name="WorkButton.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
   </data>
-  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 90</value>
+  <data name="Logo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="Logo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>161, 18</value>
+  </data>
+  <data name="Logo.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 4, 5, 4</value>
+  </data>
+  <data name="Logo.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>500, 126</value>
+  </data>
+  <data name="Logo.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>500, 126</value>
+  </data>
+  <data name="Logo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>500, 126</value>
+  </data>
+  <data name="Logo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>AutoSize</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
+    <value>11, 21</value>
   </data>
   <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>524, 275</value>
+    <value>823, 385</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Lucida Bright, 9pt</value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 6, 8, 6</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
