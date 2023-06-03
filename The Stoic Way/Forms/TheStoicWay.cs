@@ -51,8 +51,9 @@ namespace The_Stoic_Way
             "Okay, Bye"
         };
 
-        /*protected override void WndProc(ref Message m)
+        protected override void WndProc(ref Message m)
         {
+            //this.MaximizeBox = false;
             const int WM_SYSCOMMAND = 0x0112;
             const int SC_MAXIMIZE = 0xF030;
 
@@ -60,21 +61,10 @@ namespace The_Stoic_Way
                 return; // ignorer maximize system commands
 
             base.WndProc(ref m);
-        }*/
+        }
 
         private void TheStoicWay_Load(object sender, EventArgs e)
         {
-            //set up
-            this.MaximizeBox = false;
-            WorkTimer.Interval = 1000;
-            RestTimer.Interval = 1000;
-            WorkButton.Enabled = true;
-            RestButton.Enabled = true;
-            PauseButton.Enabled = true;
-            ResetButton.Enabled = true;
-            WorkTime.Text = "00:00:00";
-            RestTime.Text = "00:00:00";
-
             //Get quotes from JSON
             string pathName = "..\\..\\..\\data\\quotes.json";
             string file = File.ReadAllText(pathName);
@@ -122,7 +112,7 @@ namespace The_Stoic_Way
                     {
                         confirmationCount++;
 
-                        if (confirmationCount == confirmationMessages.Count) // This is the last confirmation, close the application
+                        if (confirmationCount == confirmationMessages.Count)
                             Application.Exit();
                         else
                             e.Cancel = true;
@@ -134,7 +124,7 @@ namespace The_Stoic_Way
         private void WorkButton_Click(object sender, EventArgs e)
         {
             string timeInput = WorkTime.Text;
-            if (TimeSpan.TryParseExact(timeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan timerValue))
+            if (WorkTime.Text != "00:00:00" && TimeSpan.TryParseExact(timeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan timerValue))
             {
                 // Set up and start the work timer
                 WorkTime.Text = timeInput;
@@ -165,8 +155,9 @@ namespace The_Stoic_Way
             }
         }
 
-        private void RestButton_Click(object sender, EventArgs e)
-        {
+        //useless event since I make it start when the WorkTimer end anyways
+        //private void RestButton_Click(object sender, EventArgs e)
+        //{
             /*RestButton.Enabled = false;
             string timeInput = RestTime.Text;
             if (TimeSpan.TryParseExact(timeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan timerValue))
@@ -179,7 +170,7 @@ namespace The_Stoic_Way
             }
             else
                 MessageBox.Show("Invalid Input");*/
-        }
+        //}
 
         private void StartRestTimer()
         {
@@ -264,28 +255,6 @@ namespace The_Stoic_Way
         private void Logo_Click(object sender, EventArgs e)
         {
             //Redirect to documentation files
-        }
-
-        private bool IsValidTimeInput(string timeInput)
-        {
-            // Define the format for the expected time input
-            string timeFormat = "hh:mm:ss";
-
-            // Parse the time input string and check if it is a valid time within the range
-            if (TimeSpan.TryParseExact(timeInput, timeFormat, CultureInfo.InvariantCulture, out TimeSpan time))
-            {
-                // Check if the parsed time is within the valid range
-                TimeSpan minTime = TimeSpan.Parse("00:00:00");
-                TimeSpan maxTime = TimeSpan.Parse("23:59:59");
-                if (time >= minTime && time <= maxTime)
-                {
-                    // The time input is valid within the specified range
-                    return true;
-                }
-            }
-
-            // The time input is either invalid or outside the specified range
-            return false;
         }
 
         private void WorkTime_Validating(object sender, CancelEventArgs e)

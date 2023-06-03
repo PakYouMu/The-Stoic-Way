@@ -82,7 +82,6 @@
             RestButton.BackgroundImage = Properties.Resources.dancing;
             RestButton.Name = "RestButton";
             RestButton.TabStop = false;
-            RestButton.Click += RestButton_Click;
             // 
             // RestTime
             // 
