@@ -34,9 +34,9 @@ namespace The_Stoic_Way
         private string restTimeInput;
         private string pausedWorkTime;
         private string pausedRestTime;
+        private string previousWorkTime;
         private bool isWorkPaused = false;
         private bool isRestPaused = false;
-
 
         public TheStoicWay()
         {
@@ -86,8 +86,8 @@ namespace The_Stoic_Way
 
                 //show text on the middle of the form
                 QuoteLabel.ForeColor = Color.FromArgb(47, 49, 48);
-                QuoteLabel.Text = "Choose someone whose way of life as well as words, and whose very face as mirroring the character that lies behind it, have won your approval.Be always pointing him out to yourself either as your guardian or as your model.This is a need, in my view, for someone as a standard against which our characters can measure themselves.Without a ruler to do it against you won't make the crooked straight." + "\n— " + "Seneca";
-                //quotes[randomIndex].Text + "\n— " + quotes[randomIndex].Author;
+                QuoteLabel.Text = quotes[randomIndex].Text + "\n— " + quotes[randomIndex].Author;
+                // "Choose someone whose way of life as well as words, and whose very face as mirroring the character that lies behind it, have won your approval.Be always pointing him out to yourself either as your guardian or as your model.This is a need, in my view, for someone as a standard against which our characters can measure themselves.Without a ruler to do it against you won't make the crooked straight." + "\n— " + "Seneca";
             }
             catch (FileNotFoundException ex)
             {
@@ -149,7 +149,9 @@ namespace The_Stoic_Way
 
         private void WorkTimer_Tick(object sender, EventArgs e)
         {
-            if (!isWorkPaused)
+            previousWorkTime = WorkTime.Text;
+
+            if (!isWorkPaused && RestTime.Text != "00:00:00")
             {
                 workTimerValue = workTimerValue.Subtract(TimeSpan.FromSeconds(1));
                 WorkTime.Text = workTimerValue.ToString(@"hh\:mm\:ss");
@@ -158,7 +160,6 @@ namespace The_Stoic_Way
                 {
                     WorkTimer.Stop();
                     MessageBox.Show("Work Timer Stopped");
-
                     StartRestTimer();
                 }
             }
