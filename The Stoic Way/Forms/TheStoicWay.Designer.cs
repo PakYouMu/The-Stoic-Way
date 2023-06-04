@@ -34,7 +34,7 @@
             ResetButton = new PictureBox();
             PauseButton = new PictureBox();
             WorkTime = new MaskedTextBox();
-            RestButton = new PictureBox();
+            ResumeButton = new PictureBox();
             RestTime = new MaskedTextBox();
             WorkTimeLabel = new Label();
             RestTimeLabel = new Label();
@@ -44,7 +44,7 @@
             RestTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)ResetButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PauseButton).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)RestButton).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ResumeButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)WorkButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Logo).BeginInit();
             SuspendLayout();
@@ -76,12 +76,13 @@
             WorkTime.Name = "WorkTime";
             WorkTime.Validating += WorkTime_Validating;
             // 
-            // RestButton
+            // ResumeButton
             // 
-            resources.ApplyResources(RestButton, "RestButton");
-            RestButton.BackgroundImage = Properties.Resources.dancing;
-            RestButton.Name = "RestButton";
-            RestButton.TabStop = false;
+            resources.ApplyResources(ResumeButton, "ResumeButton");
+            ResumeButton.BackgroundImage = Properties.Resources.play__1_;
+            ResumeButton.Name = "ResumeButton";
+            ResumeButton.TabStop = false;
+            ResumeButton.Click += ResumeButton_Click;
             // 
             // RestTime
             // 
@@ -134,7 +135,7 @@
             Controls.Add(RestTimeLabel);
             Controls.Add(WorkTimeLabel);
             Controls.Add(RestTime);
-            Controls.Add(RestButton);
+            Controls.Add(ResumeButton);
             Controls.Add(WorkTime);
             Controls.Add(PauseButton);
             Controls.Add(ResetButton);
@@ -146,7 +147,7 @@
             Load += TheStoicWay_Load;
             ((System.ComponentModel.ISupportInitialize)ResetButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)PauseButton).EndInit();
-            ((System.ComponentModel.ISupportInitialize)RestButton).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ResumeButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)WorkButton).EndInit();
             ((System.ComponentModel.ISupportInitialize)Logo).EndInit();
             ResumeLayout(false);
@@ -158,7 +159,7 @@
         private PictureBox ResetButton;
         private PictureBox PauseButton;
         private MaskedTextBox WorkTime;
-        private PictureBox RestButton;
+        private PictureBox ResumeButton;
         private MaskedTextBox RestTime;
         private Label WorkTimeLabel;
         private Label RestTimeLabel;

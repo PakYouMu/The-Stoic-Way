@@ -22,6 +22,7 @@ using System.Reflection;
 using Timer = System.Windows.Forms.Timer;
 using System.Globalization;
 using System.Timers;
+using System.Runtime.CompilerServices;
 
 namespace The_Stoic_Way
 {
@@ -34,9 +35,10 @@ namespace The_Stoic_Way
         private string restTimeInput;
         private string pausedWorkTime;
         private string pausedRestTime;
-        private string previousWorkTime;
+        private bool activeTimer;
         private bool isWorkPaused = false;
         private bool isRestPaused = false;
+
 
         public TheStoicWay()
         {
@@ -123,6 +125,8 @@ namespace The_Stoic_Way
 
         private void WorkButton_Click(object sender, EventArgs e)
         {
+            activeTimer = true;
+
             string timeInput = WorkTime.Text;
             if (WorkTime.Text != "00:00:00" && TimeSpan.TryParseExact(timeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan timerValue))
             {
@@ -139,9 +143,7 @@ namespace The_Stoic_Way
 
         private void WorkTimer_Tick(object sender, EventArgs e)
         {
-            previousWorkTime = WorkTime.Text;
-
-            if (!isWorkPaused && RestTime.Text != "00:00:00")
+            if (WorkTimer.Enabled && RestTime.Text != "00:00:00")
             {
                 workTimerValue = workTimerValue.Subtract(TimeSpan.FromSeconds(1));
                 WorkTime.Text = workTimerValue.ToString(@"hh\:mm\:ss");
@@ -150,30 +152,19 @@ namespace The_Stoic_Way
                 {
                     WorkTimer.Stop();
                     MessageBox.Show("Work Timer Stopped");
+                    WorkTime.Enabled = false;
+                    // Idea is to hide or minimize the application entirely until Rest Timer is done ticking
+                    this.WindowState = FormWindowState.Minimized;
                     StartRestTimer();
                 }
             }
         }
 
-        //useless event since I make it start when the WorkTimer end anyways
-        //private void RestButton_Click(object sender, EventArgs e)
-        //{
-            /*RestButton.Enabled = false;
-            string timeInput = RestTime.Text;
-            if (TimeSpan.TryParseExact(timeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan timerValue))
-            {
-                // Set up and start the rest timer
-                RestTime.Text = timeInput;
-                restTimerValue = timerValue;
-                RestTimer.Start();
-                isRestPaused = false;
-            }
-            else
-                MessageBox.Show("Invalid Input");*/
-        //}
-
         private void StartRestTimer()
         {
+            activeTimer = false;
+            RestTime.Enabled = false;
+
             string restTimeInput = RestTime.Text;
             if (TimeSpan.TryParseExact(restTimeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan restTimer))
             {
@@ -187,7 +178,7 @@ namespace The_Stoic_Way
 
         private void RestTimer_Tick(object sender, EventArgs e)
         {
-            if (!isRestPaused)
+            if (RestTimer.Enabled)
             {
                 restTimerValue = restTimerValue.Subtract(TimeSpan.FromSeconds(1));
                 RestTime.Text = restTimerValue.ToString(@"hh\:mm\:ss");
@@ -196,60 +187,79 @@ namespace The_Stoic_Way
                 {
                     RestTimer.Stop();
                     MessageBox.Show("Rest Timer Stopped");
+                    // Once Rest Timer is done ticking, pop the application back into the last plaace it was put in
+                    this.WindowState = FormWindowState.Maximized;
+                }
+            }
+        }
+
+        private void PauseButton_Click(object sender, EventArgs e)
+        {
+            WorkButton.Enabled = false;
+            RestTime.Enabled = false;
+
+            if (activeTimer)
+            {
+                if (WorkTimer.Enabled)
+                {
+                    // Pause the work timer
+                    WorkTimer.Stop();
+                    WorkButton.Text = "Resume";
+                    WorkTime.Enabled = false;
+                }
+            }
+            else if (!activeTimer)
+            {
+                WorkButton.Enabled = false;
+                WorkTime.Enabled = false;
+
+                if (RestTimer.Enabled)
+                {
+                    // Pause the rest timer
+                    RestTimer.Stop();
+                    ResumeButton.Text = "Resume";
+                    RestTime.Enabled = false;
+                }
+            }
+        }
+
+        private void ResumeButton_Click(object sender, EventArgs e)
+        {
+            if (activeTimer)
+            {
+                if (!WorkTimer.Enabled)
+                {
+                    // Resume the work timer
+                    WorkTimer.Start();
+                    WorkButton.Text = "Pause";
+                    WorkTime.Enabled = true;
+                }
+            }
+            else if (!activeTimer)
+            {
+                if (!RestTimer.Enabled)
+                {
+                    // Resume the rest timer
+                    RestTimer.Start();
+                    ResumeButton.Text = "Pause";
+                    RestTime.Enabled = true;
                 }
             }
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            // Reset the form to its initial state
-            WorkButton.Enabled = true;
-            RestButton.Enabled = true;
-            PauseButton.Enabled = true;
-            ResetButton.Enabled = true;
-            WorkTime.Text = "00:00:00";
-            RestTime.Text = "00:00:00";
-        }
+            if (!WorkTimer.Enabled || !RestTimer.Enabled)
+            {
+                // Reset the form to its initial state
+                WorkButton.Enabled = true;
+                ResumeButton.Enabled = true;
+                PauseButton.Enabled = true;
+                ResetButton.Enabled = true;
+                WorkTime.Text = "00:00:00";
+                RestTime.Text = "00:00:00";
+            }
 
-        private void PauseButton_Click(object sender, EventArgs e)
-        {
-            if (sender == WorkButton)
-            {
-                if (isWorkPaused)
-                {
-                    // Resume the work timer
-                    WorkTimer.Start();
-                    WorkButton.Text = "Pause";
-                    isWorkPaused = false;
-                    WorkTime.Text = pausedWorkTime; // Set the previously paused work time
-                }
-                else
-                {
-                    // Pause the work timer
-                    WorkTimer.Stop();
-                    WorkButton.Text = "Resume";
-                    isWorkPaused = true;
-                    pausedWorkTime = WorkTime.Text; // Store the current work time
-                }
-            }
-            else if (sender == RestButton)
-            {
-                if (isRestPaused)
-                {
-                    // Resume the rest timer
-                    RestTimer.Start();
-                    RestButton.Text = "Pause";
-                    isRestPaused = false;
-                    RestTime.Text = pausedRestTime; // Set the previously paused rest time
-                }
-                else
-                {
-                    // Pause the rest timer
-                    RestTimer.Stop();
-                    isRestPaused = true;
-                    pausedRestTime = RestTime.Text; // Store the current rest time
-                }
-            }
         }
 
         private void Logo_Click(object sender, EventArgs e)
@@ -263,109 +273,12 @@ namespace The_Stoic_Way
             {
                 TimeSpan maxTime = new TimeSpan(23, 59, 59);
                 if (timeValue > maxTime)
-                {
-                    // Reset the value to the maximum allowed value
-                    WorkTime.Text = maxTime.ToString(@"hh\:mm\:ss");
-                }
+                    WorkTime.Text = maxTime.ToString(@"hh\:mm\:ss"); // Reset the value to the maximum allowed value
             }
             else
-            {
-                // Invalid input, reset to empty string or default value
-                WorkTime.Text = string.Empty;
-            }
+                WorkTime.Text = string.Empty; // Invalid input, reset to empty string or default value
         }
 
         
     }
 }
-
-/*
-private void startButton_Click(object sender, EventArgs e)
-{
-string input = maskedTextBox.Text;
-
-if (IsValidTimeInput(input))
-{
-// Parse the input and calculate the total duration
-int hours = int.Parse(input.Substring(0, 2));
-int minutes = int.Parse(input.Substring(3, 2));
-int seconds = int.Parse(input.Substring(6, 2));
-duration = new TimeSpan(hours, minutes, seconds);
-
-// Disable the MaskedTextBox and Start button while the countdown is running
-maskedTextBox.Enabled = false;
-startButton.Enabled = false;
-
-// Start the countdown timer
-timer.Interval = 1000; // 1 second
-timer.Tick += Timer_Tick;
-timer.Start();
-}
-else
-{
-MessageBox.Show("Invalid time format. Please enter the time in the format of hours:minutes:seconds.");
-}
-}
-
-private bool IsValidTimeInput(string input)
-{
-// Validate the input against the desired time format
-Regex regex = new Regex(@"^\d{2}:\d{2}:\d{2}$");
-return regex.IsMatch(input);
-}
-
-private void Timer_Tick(object sender, EventArgs e)
-{
-// Update the remaining time label
-elapsedTime = elapsedTime.Add(TimeSpan.FromSeconds(1));
-TimeSpan remainingTime = duration - elapsedTime;
-
-if (remainingTime.TotalSeconds <= 0)
-{
-// Countdown complete
-timer.Stop();
-MessageBox.Show("Countdown complete!");
-ResetForm();
-}
-else
-{
-label.Text = $"Time Remaining: {remainingTime.Hours:D2}:{remainingTime.Minutes:D2}:{remainingTime.Seconds:D2}";
-}
-}
-
-private void ResetForm()
-{
-// Reset the form to its initial state
-maskedTextBox.Enabled = true;
-startButton.Enabled = true;
-maskedTextBox.Text = "00:00:00";
-elapsedTime = TimeSpan.Zero;
-label.Text = "Time Remaining: 00:00:00";
-}
-
-*/
-
-//can be used in a later patch
-/*private string GetInstallPathFromRegistry()
-{
-    // Open the registry key that contains the installation path
-    RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\MyApplication\\AppPath");
-
-    // Check if the key exists
-    if (key != null)
-    { 147, 159, 135
-        // Get the value of the "Installed" entry
-        string installPath = (string)key.GetValue("Installed");
-
-        // Close the key
-        key.Close();
-
-        // Return the installation path
-        return installPath;
-    }
-    else
-    {
-        // Return null if the key does not exist
-        return null;
-    }
-}*/
