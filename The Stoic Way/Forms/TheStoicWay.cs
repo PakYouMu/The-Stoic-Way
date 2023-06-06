@@ -35,9 +35,11 @@ namespace The_Stoic_Way
         private string restTimeInput;
         private string pausedWorkTime;
         private string pausedRestTime;
-        private bool activeTimer;
+        private string activeTimer;
         private bool isWorkPaused = false;
         private bool isRestPaused = false;
+        private FormWindowState previousWindowState;
+        private Rectangle previousBounds;
 
 
         public TheStoicWay()
@@ -53,20 +55,21 @@ namespace The_Stoic_Way
             "Okay, Bye"
         };
 
-        protected override void WndProc(ref Message m)
+        protected override void WndProc(ref Message m) //can also just be done using this in the _Load function; this.MaximizeBox = false;
         {
-            //this.MaximizeBox = false;
             const int WM_SYSCOMMAND = 0x0112;
             const int SC_MAXIMIZE = 0xF030;
 
-            if (m.Msg == WM_SYSCOMMAND && m.WParam == (IntPtr)SC_MAXIMIZE)
-                return; // ignorer maximize system commands
+            if (m.Msg == WM_SYSCOMMAND && m.WParam == (IntPtr)SC_MAXIMIZE) return; // ignorer maximize system commands
 
             base.WndProc(ref m);
         }
 
         private void TheStoicWay_Load(object sender, EventArgs e)
         {
+            previousWindowState = this.WindowState;
+            previousBounds = this.Bounds;
+
             //Get quotes from JSON
             string pathName = "..\\..\\..\\data\\quotes.json";
             string file = File.ReadAllText(pathName);
@@ -78,8 +81,9 @@ namespace The_Stoic_Way
 
                 //show text on the middle of the form
                 QuoteLabel.ForeColor = Color.FromArgb(47, 49, 48);
-                QuoteLabel.Text = quotes[randomIndex].Text + "\n— " + quotes[randomIndex].Author;
-                // "Choose someone whose way of life as well as words, and whose very face as mirroring the character that lies behind it, have won your approval.Be always pointing him out to yourself either as your guardian or as your model.This is a need, in my view, for someone as a standard against which our characters can measure themselves.Without a ruler to do it against you won't make the crooked straight." + "\n— " + "Seneca";
+                QuoteLabel.Text =
+                //quotes[randomIndex].Text + "\n— " + quotes[randomIndex].Author;
+                "Choose someone whose way of life as well as words, and whose very face as mirroring the character that lies behind it, have won your approval. Be always pointing him out to yourself either as your guardian or as your model. This is a need, in my view, for someone as a standard against which our characters can measure themselves. Without a ruler to do it against you won't make the crooked straight." + "\n— " + "Seneca";
             }
             catch (FileNotFoundException ex)
             {
@@ -125,9 +129,13 @@ namespace The_Stoic_Way
 
         private void WorkButton_Click(object sender, EventArgs e)
         {
-            activeTimer = true;
+            activeTimer = "Work";
 
             string timeInput = WorkTime.Text;
+            // here
+            WorkTime.Enabled = false;
+            RestTime.Enabled = false;
+
             if (WorkTime.Text != "00:00:00" && TimeSpan.TryParseExact(timeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan timerValue))
             {
                 // Set up and start the work timer
@@ -162,7 +170,7 @@ namespace The_Stoic_Way
 
         private void StartRestTimer()
         {
-            activeTimer = false;
+            activeTimer = "Rest";
             RestTime.Enabled = false;
 
             string restTimeInput = RestTime.Text;
@@ -178,6 +186,8 @@ namespace The_Stoic_Way
 
         private void RestTimer_Tick(object sender, EventArgs e)
         {
+            activeTimer = "Rest";
+
             if (RestTimer.Enabled)
             {
                 restTimerValue = restTimerValue.Subtract(TimeSpan.FromSeconds(1));
@@ -185,10 +195,13 @@ namespace The_Stoic_Way
 
                 if (restTimerValue.TotalSeconds <= 0)
                 {
+                    this.WindowState = previousWindowState;
+                    this.Bounds = previousBounds;
                     RestTimer.Stop();
                     MessageBox.Show("Rest Timer Stopped");
-                    // Once Rest Timer is done ticking, pop the application back into the last plaace it was put in
-                    this.WindowState = FormWindowState.Maximized;
+                    // here
+                    WorkTime.Enabled = true;
+                    RestTime.Enabled = true;
                 }
             }
         }
@@ -198,68 +211,50 @@ namespace The_Stoic_Way
             WorkButton.Enabled = false;
             RestTime.Enabled = false;
 
-            if (activeTimer)
+            if (activeTimer == "Work")
             {
                 if (WorkTimer.Enabled)
-                {
-                    // Pause the work timer
                     WorkTimer.Stop();
-                    WorkButton.Text = "Resume";
-                    WorkTime.Enabled = false;
-                }
             }
-            else if (!activeTimer)
+            else if (activeTimer == "Rest")
             {
-                WorkButton.Enabled = false;
-                WorkTime.Enabled = false;
-
                 if (RestTimer.Enabled)
-                {
-                    // Pause the rest timer
                     RestTimer.Stop();
-                    ResumeButton.Text = "Resume";
-                    RestTime.Enabled = false;
-                }
             }
         }
 
+
         private void ResumeButton_Click(object sender, EventArgs e)
         {
-            if (activeTimer)
+            // here
+            WorkTime.Enabled = false;
+            RestTime.Enabled = false;
+
+            if (activeTimer == "Work")
             {
                 if (!WorkTimer.Enabled)
-                {
-                    // Resume the work timer
                     WorkTimer.Start();
-                    WorkButton.Text = "Pause";
-                    WorkTime.Enabled = true;
-                }
             }
-            else if (!activeTimer)
+            else if (activeTimer == "Rest")
             {
                 if (!RestTimer.Enabled)
-                {
-                    // Resume the rest timer
                     RestTimer.Start();
-                    ResumeButton.Text = "Pause";
-                    RestTime.Enabled = true;
-                }
             }
         }
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            if (!WorkTimer.Enabled || !RestTimer.Enabled)
+            if (!WorkTimer.Enabled && !RestTimer.Enabled) // if either of the timers are not on
             {
-                // Reset the form to its initial state
                 WorkButton.Enabled = true;
                 ResumeButton.Enabled = true;
                 PauseButton.Enabled = true;
                 ResetButton.Enabled = true;
+                WorkTime.Enabled = true;
+                RestTime.Enabled = true;
                 WorkTime.Text = "00:00:00";
                 RestTime.Text = "00:00:00";
             }
-
         }
 
         private void Logo_Click(object sender, EventArgs e)
@@ -278,7 +273,5 @@ namespace The_Stoic_Way
             else
                 WorkTime.Text = string.Empty; // Invalid input, reset to empty string or default value
         }
-
-        
     }
 }

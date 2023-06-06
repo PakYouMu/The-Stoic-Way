@@ -37,11 +37,11 @@
             ResumeButton = new PictureBox();
             RestTime = new MaskedTextBox();
             WorkTimeLabel = new Label();
-            RestTimeLabel = new Label();
             WorkButton = new PictureBox();
             Logo = new PictureBox();
             WorkTimer = new System.Windows.Forms.Timer(components);
             RestTimer = new System.Windows.Forms.Timer(components);
+            RestTimeLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)ResetButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PauseButton).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ResumeButton).BeginInit();
@@ -52,6 +52,7 @@
             // QuoteLabel
             // 
             resources.ApplyResources(QuoteLabel, "QuoteLabel");
+            QuoteLabel.ForeColor = Color.DarkCyan;
             QuoteLabel.Name = "QuoteLabel";
             // 
             // ResetButton
@@ -79,7 +80,7 @@
             // ResumeButton
             // 
             resources.ApplyResources(ResumeButton, "ResumeButton");
-            ResumeButton.BackgroundImage = Properties.Resources.play__1_;
+            ResumeButton.Image = Properties.Resources.play__1_;
             ResumeButton.Name = "ResumeButton";
             ResumeButton.TabStop = false;
             ResumeButton.Click += ResumeButton_Click;
@@ -94,15 +95,10 @@
             resources.ApplyResources(WorkTimeLabel, "WorkTimeLabel");
             WorkTimeLabel.Name = "WorkTimeLabel";
             // 
-            // RestTimeLabel
-            // 
-            resources.ApplyResources(RestTimeLabel, "RestTimeLabel");
-            RestTimeLabel.Name = "RestTimeLabel";
-            // 
             // WorkButton
             // 
             resources.ApplyResources(WorkButton, "WorkButton");
-            WorkButton.BackgroundImage = Properties.Resources.alarm_clock__1_;
+            WorkButton.Image = Properties.Resources._1080_Timer;
             WorkButton.Name = "WorkButton";
             WorkButton.TabStop = false;
             WorkButton.Click += WorkButton_Click;
@@ -110,7 +106,7 @@
             // Logo
             // 
             resources.ApplyResources(Logo, "Logo");
-            Logo.BackgroundImage = Properties.Resources.The_Stoic_Way_Logo;
+            Logo.Image = Properties.Resources._1080_Logo;
             Logo.Name = "Logo";
             Logo.TabStop = false;
             Logo.Click += Logo_Click;
@@ -125,14 +121,19 @@
             RestTimer.Interval = 1000;
             RestTimer.Tick += RestTimer_Tick;
             // 
+            // RestTimeLabel
+            // 
+            resources.ApplyResources(RestTimeLabel, "RestTimeLabel");
+            RestTimeLabel.Name = "RestTimeLabel";
+            // 
             // TheStoicWay
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(147, 159, 135);
+            Controls.Add(RestTimeLabel);
             Controls.Add(Logo);
             Controls.Add(WorkButton);
-            Controls.Add(RestTimeLabel);
             Controls.Add(WorkTimeLabel);
             Controls.Add(RestTime);
             Controls.Add(ResumeButton);
@@ -162,10 +163,10 @@
         private PictureBox ResumeButton;
         private MaskedTextBox RestTime;
         private Label WorkTimeLabel;
-        private Label RestTimeLabel;
         private PictureBox WorkButton;
         private PictureBox Logo;
         private System.Windows.Forms.Timer WorkTimer;
         private System.Windows.Forms.Timer RestTimer;
+        private Label RestTimeLabel;
     }
 }
