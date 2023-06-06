@@ -80,7 +80,6 @@ namespace The_Stoic_Way
                 QuoteLabel.ForeColor = Color.FromArgb(47, 49, 48);
                 QuoteLabel.Text =
                 quotes[randomIndex].Text + "\n\n— " + quotes[randomIndex].Author;
-                //"...So you were born to feel \"nice\"? Instead of doing things and experiencing them? Don’t you see the plants, the birds, the ants and spiders and bees going about their individual tasks, putting the world in order, as best they can? And you’re not willing to do your job as a human being? Why aren’t you running to do what your nature demands?\n\nYou don’t love yourself enough. Or you’d love your nature too, and what it demands of you." + "\n\n— " + "Marcus Aurelius";
             }
             catch (FileNotFoundException ex)
             {
