@@ -63,9 +63,9 @@ namespace The_Stoic_Way.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1080_Logo {
+        internal static System.Drawing.Bitmap Pause {
             get {
-                object obj = ResourceManager.GetObject("1080 Logo", resourceCulture);
+                object obj = ResourceManager.GetObject("Pause", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace The_Stoic_Way.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1080_Timer {
+        internal static System.Drawing.Bitmap Play {
             get {
-                object obj = ResourceManager.GetObject("1080 Timer", resourceCulture);
+                object obj = ResourceManager.GetObject("Play", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace The_Stoic_Way.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap alarm_clock__1_ {
+        internal static System.Drawing.Bitmap Reset {
             get {
-                object obj = ResourceManager.GetObject("alarm-clock (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("Reset", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace The_Stoic_Way.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap dancing {
+        internal static System.Drawing.Bitmap The_Stoic_Way {
             get {
-                object obj = ResourceManager.GetObject("dancing", resourceCulture);
+                object obj = ResourceManager.GetObject("The Stoic Way", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,29 +103,9 @@ namespace The_Stoic_Way.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pause__1_ {
+        internal static System.Drawing.Bitmap Timer {
             get {
-                object obj = ResourceManager.GetObject("pause (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap play__1_ {
-            get {
-                object obj = ResourceManager.GetObject("play (1)", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap undo_circular_arrow {
-            get {
-                object obj = ResourceManager.GetObject("undo-circular-arrow", resourceCulture);
+                object obj = ResourceManager.GetObject("Timer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

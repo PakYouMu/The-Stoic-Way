@@ -69,10 +69,10 @@
     <value>NoControl</value>
   </data>
   <data name="QuoteLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 98</value>
+    <value>10, 76</value>
   </data>
   <data name="QuoteLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 228</value>
+    <value>525, 250</value>
   </data>
   <data name="QuoteLabel.Text" xml:space="preserve">
     <value>Lorem Ipsum</value>
@@ -83,14 +83,26 @@
   <data name="ResetButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>465, 9</value>
   </data>
+  <data name="ResetButton.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="ResetButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
   <data name="ResetButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
   </data>
   <data name="ResetButton.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
+    <value>StretchImage</value>
   </data>
   <data name="PauseButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 9</value>
+  </data>
+  <data name="PauseButton.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="PauseButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
   </data>
   <data name="PauseButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
@@ -117,11 +129,17 @@
   <data name="ResumeButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>503, 9</value>
   </data>
+  <data name="ResumeButton.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="ResumeButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
   <data name="ResumeButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
   </data>
   <data name="ResumeButton.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
+    <value>StretchImage</value>
   </data>
   <data name="RestTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>480, 304</value>
@@ -159,23 +177,29 @@
   <data name="WorkButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 9</value>
   </data>
+  <data name="WorkButton.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="WorkButton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
   <data name="WorkButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
   </data>
   <data name="WorkButton.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
+    <value>StretchImage</value>
   </data>
   <data name="Logo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="Logo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 9</value>
+    <value>86, 8</value>
   </data>
   <data name="Logo.Size" type="System.Drawing.Size, System.Drawing">
     <value>373, 87</value>
   </data>
   <data name="Logo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>Zoom</value>
+    <value>StretchImage</value>
   </data>
   <data name="RestTimeLabel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Lucida Bright, 10pt</value>

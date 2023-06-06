@@ -58,7 +58,7 @@
             // ResetButton
             // 
             resources.ApplyResources(ResetButton, "ResetButton");
-            ResetButton.BackgroundImage = Properties.Resources.undo_circular_arrow;
+            ResetButton.Image = Properties.Resources.Reset;
             ResetButton.Name = "ResetButton";
             ResetButton.TabStop = false;
             ResetButton.Click += ResetButton_Click;
@@ -66,7 +66,7 @@
             // PauseButton
             // 
             resources.ApplyResources(PauseButton, "PauseButton");
-            PauseButton.BackgroundImage = Properties.Resources.pause__1_;
+            PauseButton.Image = Properties.Resources.Pause;
             PauseButton.Name = "PauseButton";
             PauseButton.TabStop = false;
             PauseButton.Click += PauseButton_Click;
@@ -80,7 +80,7 @@
             // ResumeButton
             // 
             resources.ApplyResources(ResumeButton, "ResumeButton");
-            ResumeButton.Image = Properties.Resources.play__1_;
+            ResumeButton.Image = Properties.Resources.Play;
             ResumeButton.Name = "ResumeButton";
             ResumeButton.TabStop = false;
             ResumeButton.Click += ResumeButton_Click;
@@ -98,7 +98,7 @@
             // WorkButton
             // 
             resources.ApplyResources(WorkButton, "WorkButton");
-            WorkButton.Image = Properties.Resources._1080_Timer;
+            WorkButton.Image = Properties.Resources.Timer;
             WorkButton.Name = "WorkButton";
             WorkButton.TabStop = false;
             WorkButton.Click += WorkButton_Click;
@@ -106,7 +106,7 @@
             // Logo
             // 
             resources.ApplyResources(Logo, "Logo");
-            Logo.Image = Properties.Resources._1080_Logo;
+            Logo.Image = Properties.Resources.The_Stoic_Way;
             Logo.Name = "Logo";
             Logo.TabStop = false;
             Logo.Click += Logo_Click;

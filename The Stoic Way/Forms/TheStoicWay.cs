@@ -28,18 +28,16 @@ namespace The_Stoic_Way
 {
     public partial class TheStoicWay : Form
     {
+        private string activeTimer = "";
+        private string workTimeInput = "";
+        private string restTimeInput = "";
+        private string pausedWorkTime = "";
+        private string pausedRestTime = "";
         private int confirmationCount = 0;
+        private Rectangle previousBounds;
+        private FormWindowState previousWindowState;
         private TimeSpan workTimerValue = TimeSpan.Zero;
         private TimeSpan restTimerValue = TimeSpan.Zero;
-        private string workTimeInput;
-        private string restTimeInput;
-        private string pausedWorkTime;
-        private string pausedRestTime;
-        private string activeTimer;
-        private bool isWorkPaused = false;
-        private bool isRestPaused = false;
-        private FormWindowState previousWindowState;
-        private Rectangle previousBounds;
 
 
         public TheStoicWay()
@@ -67,23 +65,22 @@ namespace The_Stoic_Way
 
         private void TheStoicWay_Load(object sender, EventArgs e)
         {
-            previousWindowState = this.WindowState;
-            previousBounds = this.Bounds;
+            previousWindowState = WindowState;
+            previousBounds = Bounds;
 
             //Get quotes from JSON
             string pathName = "..\\..\\..\\data\\quotes.json";
-            string file = File.ReadAllText(pathName);
             try
             {
+                string file = File.ReadAllText(pathName);
                 dynamic quotes = JsonConvert.DeserializeObject<List<Quote>>(file);
                 Random random = new Random();
                 int randomIndex = random.Next(quotes.Count);
 
-                //show text on the middle of the form
                 QuoteLabel.ForeColor = Color.FromArgb(47, 49, 48);
                 QuoteLabel.Text =
-                //quotes[randomIndex].Text + "\n— " + quotes[randomIndex].Author;
-                "Choose someone whose way of life as well as words, and whose very face as mirroring the character that lies behind it, have won your approval. Be always pointing him out to yourself either as your guardian or as your model. This is a need, in my view, for someone as a standard against which our characters can measure themselves. Without a ruler to do it against you won't make the crooked straight." + "\n— " + "Seneca";
+                quotes[randomIndex].Text + "\n\n— " + quotes[randomIndex].Author;
+                //"...So you were born to feel \"nice\"? Instead of doing things and experiencing them? Don’t you see the plants, the birds, the ants and spiders and bees going about their individual tasks, putting the world in order, as best they can? And you’re not willing to do your job as a human being? Why aren’t you running to do what your nature demands?\n\nYou don’t love yourself enough. Or you’d love your nature too, and what it demands of you." + "\n\n— " + "Marcus Aurelius";
             }
             catch (FileNotFoundException ex)
             {
@@ -117,7 +114,6 @@ namespace The_Stoic_Way
                     else
                     {
                         confirmationCount++;
-
                         if (confirmationCount == confirmationMessages.Count)
                             Application.Exit();
                         else
@@ -129,24 +125,24 @@ namespace The_Stoic_Way
 
         private void WorkButton_Click(object sender, EventArgs e)
         {
+            TimeEnabledFalse();
             activeTimer = "Work";
-
             string timeInput = WorkTime.Text;
-            // here
-            WorkTime.Enabled = false;
-            RestTime.Enabled = false;
-
-            if (WorkTime.Text != "00:00:00" && TimeSpan.TryParseExact(timeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan timerValue))
+            string restTimeInput = RestTime.Text;
+            if (WorkTime.Text != "00:00:00" && TimeSpan.TryParseExact(timeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan timerValue) && RestTime.Text != "00:00:00" && TimeSpan.TryParseExact(restTimeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan restTimer))
             {
                 // Set up and start the work timer
                 WorkTime.Text = timeInput;
                 workTimeInput = timeInput;
                 workTimerValue = timerValue;
                 WorkTimer.Start();
-                isWorkPaused = false;
             }
             else
-                MessageBox.Show("Invalid Work Time Input");
+            {
+                MessageBox.Show("Invalid Time Input");
+                Reset();
+            }
+
         }
 
         private void WorkTimer_Tick(object sender, EventArgs e)
@@ -160,8 +156,7 @@ namespace The_Stoic_Way
                 {
                     WorkTimer.Stop();
                     MessageBox.Show("Work Timer Stopped");
-                    WorkTime.Enabled = false;
-                    // Idea is to hide or minimize the application entirely until Rest Timer is done ticking
+                    TimeEnabledFalse();
                     this.WindowState = FormWindowState.Minimized;
                     StartRestTimer();
                 }
@@ -171,17 +166,13 @@ namespace The_Stoic_Way
         private void StartRestTimer()
         {
             activeTimer = "Rest";
-            RestTime.Enabled = false;
 
             string restTimeInput = RestTime.Text;
             if (TimeSpan.TryParseExact(restTimeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan restTimer))
             {
                 restTimerValue = restTimer;
                 RestTimer.Start();
-                isRestPaused = false;
             }
-            else
-                MessageBox.Show("Invalid Rest Time Input");
         }
 
         private void RestTimer_Tick(object sender, EventArgs e)
@@ -199,7 +190,6 @@ namespace The_Stoic_Way
                     this.Bounds = previousBounds;
                     RestTimer.Stop();
                     MessageBox.Show("Rest Timer Stopped");
-                    // here
                     WorkTime.Enabled = true;
                     RestTime.Enabled = true;
                 }
@@ -209,7 +199,7 @@ namespace The_Stoic_Way
         private void PauseButton_Click(object sender, EventArgs e)
         {
             WorkButton.Enabled = false;
-            RestTime.Enabled = false;
+            TimeEnabledFalse();
 
             if (activeTimer == "Work")
             {
@@ -226,9 +216,7 @@ namespace The_Stoic_Way
 
         private void ResumeButton_Click(object sender, EventArgs e)
         {
-            // here
-            WorkTime.Enabled = false;
-            RestTime.Enabled = false;
+            TimeEnabledFalse();
 
             if (activeTimer == "Work")
             {
@@ -244,6 +232,34 @@ namespace The_Stoic_Way
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
+            Reset();
+        }
+
+        private void Logo_Click(object sender, EventArgs e)
+        {
+            //Redirect to documentation files
+        }
+
+        private void WorkTime_Validating(object sender, CancelEventArgs e)
+        {
+            if (TimeSpan.TryParseExact(WorkTime.Text, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan workTimeValue) && TimeSpan.TryParseExact(RestTime.Text, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan restTimeValue))
+            {
+                TimeSpan maxTime = new TimeSpan(23, 59, 59);
+                if (workTimeValue > maxTime && restTimeValue > maxTime)
+                    WorkTime.Text = maxTime.ToString(@"hh\:mm\:ss"); // Reset the value to the maximum allowed value
+            }
+            else
+                WorkTime.Text = string.Empty; // Invalid input, reset to empty string or default value
+        }
+
+        private void TimeEnabledFalse()
+        {
+            WorkTime.Enabled = false;
+            RestTime.Enabled = false;
+        }
+
+        private void Reset()
+        {
             if (!WorkTimer.Enabled && !RestTimer.Enabled) // if either of the timers are not on
             {
                 WorkButton.Enabled = true;
@@ -255,23 +271,6 @@ namespace The_Stoic_Way
                 WorkTime.Text = "00:00:00";
                 RestTime.Text = "00:00:00";
             }
-        }
-
-        private void Logo_Click(object sender, EventArgs e)
-        {
-            //Redirect to documentation files
-        }
-
-        private void WorkTime_Validating(object sender, CancelEventArgs e)
-        {
-            if (TimeSpan.TryParseExact(WorkTime.Text, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan timeValue))
-            {
-                TimeSpan maxTime = new TimeSpan(23, 59, 59);
-                if (timeValue > maxTime)
-                    WorkTime.Text = maxTime.ToString(@"hh\:mm\:ss"); // Reset the value to the maximum allowed value
-            }
-            else
-                WorkTime.Text = string.Empty; // Invalid input, reset to empty string or default value
         }
     }
 }
