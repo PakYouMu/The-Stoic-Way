@@ -42,8 +42,5 @@ namespace The_Stoic_Way.Classes
             ApplicationConfiguration.Initialize();
             Application.Run(new TheStoicWay());
         }
-
-
-
     }
 }

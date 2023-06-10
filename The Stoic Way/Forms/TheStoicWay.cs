@@ -46,12 +46,11 @@ namespace The_Stoic_Way
             InitializeComponent();
         }
 
-        //private list for exit confirmation messages
         private List<string> confirmationMessages = new List<string>
         {
-            "Are you sure you want to quit?",
-            "Are you really sure?",
-            "Okay, Bye"
+            "Are you sure you want to exit?",
+            "Do you really want to leave?",
+            "Are you certain?"
         };
 
         protected override void WndProc(ref Message m) //can also just be done using this in the _Load function; this.MaximizeBox = false;
@@ -181,7 +180,6 @@ namespace The_Stoic_Way
                     RestTimer.Stop();
             }
         }
-
 
         private void ResumeButton_Click(object sender, EventArgs e)
         {
