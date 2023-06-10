@@ -23,6 +23,7 @@ using Timer = System.Windows.Forms.Timer;
 using System.Globalization;
 using System.Timers;
 using System.Runtime.CompilerServices;
+using System.Linq.Expressions;
 
 namespace The_Stoic_Way
 {
@@ -58,7 +59,7 @@ namespace The_Stoic_Way
             const int WM_SYSCOMMAND = 0x0112;
             const int SC_MAXIMIZE = 0xF030;
 
-            if (m.Msg == WM_SYSCOMMAND && m.WParam == (IntPtr)SC_MAXIMIZE) return; // ignorer maximize system commands
+            if (m.Msg == WM_SYSCOMMAND && m.WParam == (IntPtr)SC_MAXIMIZE) return;
 
             base.WndProc(ref m);
         }
@@ -67,28 +68,10 @@ namespace The_Stoic_Way
         {
             previousWindowState = WindowState;
             previousBounds = Bounds;
-
-            //Get quotes from JSON
-            string pathName = "..\\..\\..\\data\\quotes.json";
+            
             try
             {
-                string file = File.ReadAllText(pathName);
-                dynamic quotes = JsonConvert.DeserializeObject<List<Quote>>(file);
-                Random random = new Random();
-                int randomIndex = random.Next(quotes.Count);
-
-                QuoteLabel.ForeColor = Color.FromArgb(47, 49, 48);
-                QuoteLabel.Text =
-                quotes[randomIndex].Text + "\n\n— " + quotes[randomIndex].Author;
-            }
-            catch (FileNotFoundException ex)
-            {
-                if (!File.Exists(pathName))
-                {
-                    MessageBox.Show("File Does Not Exist\n\n" + ex.ToString());
-                    Console.Write(ex.ToString());
-                    Application.Exit();
-                }
+                AccessDatabase();
             }
             catch (Exception ex)
             {
@@ -128,20 +111,20 @@ namespace The_Stoic_Way
             activeTimer = "Work";
             string timeInput = WorkTime.Text;
             string restTimeInput = RestTime.Text;
+
             if (WorkTime.Text != "00:00:00" && TimeSpan.TryParseExact(timeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan timerValue) && RestTime.Text != "00:00:00" && TimeSpan.TryParseExact(restTimeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan restTimer))
             {
-                // Set up and start the work timer
                 WorkTime.Text = timeInput;
                 workTimeInput = timeInput;
                 workTimerValue = timerValue;
                 WorkTimer.Start();
+                AccessDatabase();
             }
             else
             {
-                MessageBox.Show("Invalid Time Input");
+                MessageBox.Show("Invalid Input");
                 Reset();
             }
-
         }
 
         private void WorkTimer_Tick(object sender, EventArgs e)
@@ -162,22 +145,8 @@ namespace The_Stoic_Way
             }
         }
 
-        private void StartRestTimer()
-        {
-            activeTimer = "Rest";
-
-            string restTimeInput = RestTime.Text;
-            if (TimeSpan.TryParseExact(restTimeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan restTimer))
-            {
-                restTimerValue = restTimer;
-                RestTimer.Start();
-            }
-        }
-
         private void RestTimer_Tick(object sender, EventArgs e)
         {
-            activeTimer = "Rest";
-
             if (RestTimer.Enabled)
             {
                 restTimerValue = restTimerValue.Subtract(TimeSpan.FromSeconds(1));
@@ -188,6 +157,7 @@ namespace The_Stoic_Way
                     this.WindowState = previousWindowState;
                     this.Bounds = previousBounds;
                     RestTimer.Stop();
+                    AccessDatabase();
                     MessageBox.Show("Rest Timer Stopped");
                     WorkTime.Enabled = true;
                     RestTime.Enabled = true;
@@ -237,7 +207,7 @@ namespace The_Stoic_Way
         private void Logo_Click(object sender, EventArgs e)
         {
             //Redirect to documentation files
-        }
+        } 
 
         private void WorkTime_Validating(object sender, CancelEventArgs e)
         {
@@ -251,10 +221,29 @@ namespace The_Stoic_Way
                 WorkTime.Text = string.Empty; // Invalid input, reset to empty string or default value
         }
 
-        private void TimeEnabledFalse()
+        private void AccessDatabase()
         {
-            WorkTime.Enabled = false;
-            RestTime.Enabled = false;
+            string pathName = "..\\..\\..\\data\\quotes.json";
+            try
+            {
+                string file = File.ReadAllText(pathName);
+                dynamic quotes = JsonConvert.DeserializeObject<List<Quote>>(file);
+                Random random = new Random();
+                int randomIndex = random.Next(quotes.Count);
+
+                QuoteLabel.ForeColor = Color.FromArgb(47, 49, 48);
+                QuoteLabel.Text =
+                quotes[randomIndex].Text + "\n\n— " + quotes[randomIndex].Author;
+            }
+            catch (FileNotFoundException ex)
+            {
+                if (!File.Exists(pathName))
+                {
+                    MessageBox.Show("File Does Not Exist\n\n" + ex.ToString());
+                    Console.Write(ex.ToString());
+                    Application.Exit();
+                }
+            }
         }
 
         private void Reset()
@@ -270,6 +259,24 @@ namespace The_Stoic_Way
                 WorkTime.Text = "00:00:00";
                 RestTime.Text = "00:00:00";
             }
+        }
+
+        private void StartRestTimer()
+        {
+            activeTimer = "Rest";
+
+            string restTimeInput = RestTime.Text;
+            if (TimeSpan.TryParseExact(restTimeInput, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan restTimer))
+            {
+                restTimerValue = restTimer;
+                RestTimer.Start();
+            }
+        }
+
+        private void TimeEnabledFalse()
+        {
+            WorkTime.Enabled = false;
+            RestTime.Enabled = false;
         }
     }
 }

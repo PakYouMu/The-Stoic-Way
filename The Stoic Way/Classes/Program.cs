@@ -22,6 +22,7 @@ namespace The_Stoic_Way.Classes
             startupKey.Close();
         }
     }
+
     internal static class Program
     {
         /// <summary>
