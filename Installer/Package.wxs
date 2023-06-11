@@ -1,15 +1,9 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Package Name="Installer"
-		   Manufacturer="PakYouMu"
-		   Version="1.0.0.0"
-		   UpgradeCode="320eee0f-2e20-4f29-9122-37792ce61d5c">
-	  
+  <Package Name="Installer" Manufacturer="TODO Manufacturer" Version="1.0.0.0" UpgradeCode="df2438c7-fc4a-4f82-b0f2-db56a624362e">
     <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
 
     <Feature Id="Main">
       <ComponentGroupRef Id="ExampleComponents" />
     </Feature>
-	  
-	  
   </Package>
 </Wix>
