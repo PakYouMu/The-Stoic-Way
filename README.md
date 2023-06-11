@@ -24,7 +24,7 @@ To use The Stoic Way, follow these steps:
 2. Download the .msi file
 3. Run the installer
 4. The files are automatically installed in Program Files (x86)
-5. Launch The Stoic Way application (As Administrator)
+5. Launch The Stoic Way application as Administrator
   
 Please note that while The Stoic Way aims to provide a valuable tool for practicing Stoicism, it is important to remember that true change and growth come from personal dedication and commitment to the philosophy.
 
