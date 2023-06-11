@@ -23,6 +23,10 @@ using System.Runtime.CompilerServices;
 using System.Linq.Expressions;
 using System.Diagnostics;
 using System.Xml.XPath;
+using Microsoft.VisualBasic.Devices;
+using Microsoft.VisualBasic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.Design.AxImporter;
 
 namespace The_Stoic_Way
 {
@@ -44,13 +48,14 @@ namespace The_Stoic_Way
 
         private List<string> confirmationMessages = new List<string>
         {
-            "Are you sure you want to exit?",
-            "Do you really want to leave?",
-            "Are you certain?"
+            "Do you want to exit?\n\n \"Our actions may be impeded...but there can be no impeding our intentions or dispositions. Because we can accommodate and adapt...\"",
+            "Are you really sure you want to exit?\n\n... \"The mind adapts and converts to its own purposes the obstacle to our acting...\"",
+            "One final reminder before exiting then.\n\n... \"The impediment to action advances action. What stands in the way becomes the way\"\n\n— Marcus Aurelius"
         };
 
-        protected override void WndProc(ref Message m) //can also just be done using this in the _Load function; this.MaximizeBox = false;
+        protected override void WndProc(ref Message m)
         {
+            //can also just be done using this in the _Load function; this.MaximizeBox = false;
             const int WM_SYSCOMMAND = 0x0112;
             const int SC_MAXIMIZE = 0xF030;
 
@@ -248,8 +253,7 @@ namespace The_Stoic_Way
                 int randomIndex = random.Next(quotes.Count);
 
                 QuoteLabel.ForeColor = Color.FromArgb(47, 49, 48);
-                QuoteLabel.Text =
-                quotes[randomIndex].Text + "\n\n— " + quotes[randomIndex].Author;
+                QuoteLabel.Text = quotes[randomIndex].Text + "\n\n— " + quotes[randomIndex].Author;
             }
             catch (FileNotFoundException ex)
             {

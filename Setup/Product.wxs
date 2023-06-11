@@ -9,7 +9,8 @@
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of The Stoic Way is already installed." />
-		<MediaTemplate />
+		<MediaTemplate EmbedCab="yes"/>
+		<!-- <Media Id="2" Cabinet="cab1.cab" EmbedCab="yes"/> -->
 
 		<Feature Id="ProductFeature" Title="Setup" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
@@ -29,7 +30,7 @@
 
 	<Fragment>
 		<ComponentGroup Id="ProductComponents">
-			<Component Id="PublishedFiles" Guid="c958f70e-1c8c-4a38-8cae-402a15ee1636" Directory="INSTALLFOLDER">
+			<Component Id="PublishedFiles" Guid="fa7fb4c4-e0d3-4a86-887c-1e86f4d2856b" Directory="INSTALLFOLDER">
 				<File Id="File1" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\Newtonsoft.Json.dll" />
 
 				<File Id="File2" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.deps.json" />
@@ -43,11 +44,11 @@
 				<File Id="File6" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.runtimeconfig.json" />
 			</Component>
 
-			<Component Id="SubFolder1Files" Guid="198dc241-6248-42ac-8ce7-a59d1990f3d5" Directory="en">
+			<Component Id="SubFolder1Files" Guid="1c24005c-6085-45dd-8712-d821cffafb66" Directory="en">
 				<File Id="EnFile1" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\en\The Stoic Way.resources.dll" />
 			</Component>
 
-			<Component Id="SubFolder2Files" Guid="ed191018-3063-4371-a86b-faf7d6f8644a" Directory="Data">
+			<Component Id="SubFolder2Files" Guid="cf8e2c59-b300-4193-a992-20f7902bf8c5" Directory="Data">
 				<File Id="DataFile1" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\Data\quotes.json" />
 			</Component>
 		</ComponentGroup>
