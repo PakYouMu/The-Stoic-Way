@@ -20,7 +20,7 @@ The development of The Stoic Way utilizes the following technologies:
 ## Installation and Setup
 To use The Stoic Way, follow these steps:
 
-1. Click Releases
+1. Go to [Releases](https://github.com/PakYouMu/The-Stoic-Way/releases)
 2. Download the .msi file
 3. Run the installer
 4. The files are automatically installed in Program Files (x86)
