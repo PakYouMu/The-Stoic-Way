@@ -1,4 +1,4 @@
-[the-stoic-way-high-resolution-color-logo](https://github.com/PakYouMu/The-Stoic-Way/assets/115514634/321306cb-6916-4803-aac4-806e52cae583)
+[The Stoic Way](https://github.com/PakYouMu/The-Stoic-Way/assets/115514634/321306cb-6916-4803-aac4-806e52cae583)
 
 
 ## Introduction
