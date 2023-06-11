@@ -1,4 +1,5 @@
-# The Stoic Way
+[the-stoic-way-high-resolution-color-logo](https://github.com/PakYouMu/The-Stoic-Way/assets/115514634/321306cb-6916-4803-aac4-806e52cae583)
+
 
 ## Introduction
 The Stoic Way is a software application aimed at promoting and facilitating the practice of Stoicism; an ancient school of thought that focuses on reason, self-control, and the acceptance of fate. In today's world, the lack of a daily reminder to be in control of our thoughts, reasoning, and situations has become a significant problem, as it has been replaced with self-centered pleasure-seeking. The Stoic Way aims to address this issue by providing a tool for individuals to incorporate Stoic principles into their daily lives. The Stoic Way is a quote of the day applicaton that also doubles as a Pomodoro Timer application for productivitiy!
