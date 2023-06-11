@@ -2,7 +2,7 @@
 
 
 ## Introduction
-The Stoic Way is a software application aimed at promoting and facilitating the practice of Stoicism; an ancient school of thought that focuses on reason, self-control, and the acceptance of fate. In today's world, the lack of a daily reminder to be in control of our thoughts, reasoning, and situations has become a significant problem, as it has been replaced with self-centered pleasure-seeking. The Stoic Way is a quote of the day applicaton that incorporate Stoic principles into their daily lives and also doubles as a Pomodoro Timer application for productivitiy!
+The Stoic Way is a software application aimed at promoting and facilitating the practice of Stoicism; an ancient school of thought that focuses on reason, self-control, and the acceptance of fate. In today's world, the lack of a daily reminder to be in control of our thoughts, reasoning, and situations has become a significant problem, as it has been replaced with self-centered pleasure-seeking. The Stoic Way is a quote of the day applicaton that incorporate Stoic principles from various Stoics and Philosophers for us to be reminded about in our daily lives; it also doubles as a Pomodoro Timer application for productivitiy!
 
 ## Pre-requisites
 Before downloading The Stoic Way, you must have ASP.NET Core Runtime Framework Version 7.0. Click [here](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) if you don't have it yet. Depending on your machine platform, download the appropriate installer.  
