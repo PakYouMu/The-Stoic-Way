@@ -6,8 +6,6 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using OpenAI_API.Completions;
-using OpenAI_API;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -16,7 +14,6 @@ using System.Reflection.Emit;
 using System.Text.RegularExpressions;
 using System.Threading;
 using Microsoft.VisualBasic.ApplicationServices;
-using OpenAI_API.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using System.Reflection;
 using Timer = System.Windows.Forms.Timer;
@@ -31,9 +28,6 @@ namespace The_Stoic_Way
     {
         private string activeTimer = "";
         private string workTimeInput = "";
-        private string restTimeInput = "";
-        private string pausedWorkTime = "";
-        private string pausedRestTime = "";
         private int confirmationCount = 0;
         private Rectangle previousBounds;
         private FormWindowState previousWindowState;
