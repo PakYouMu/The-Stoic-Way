@@ -2,6 +2,7 @@
   <Fragment>
     <ComponentGroup Id="ExampleComponents"
 					Directory="INSTALLFOLDER">
+		
       <Component>
         <File Source="ExampleComponents.wxs"/>
       </Component>

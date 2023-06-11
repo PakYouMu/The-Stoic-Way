@@ -61,7 +61,7 @@ namespace The_Stoic_Way
         {
             previousWindowState = WindowState;
             previousBounds = Bounds;
-            
+
             try
             {
                 AccessDatabase();
@@ -199,23 +199,37 @@ namespace The_Stoic_Way
         private void Logo_Click(object sender, EventArgs e)
         {
             //Redirect to documentation files
-        } 
+        }
 
         private void WorkTime_Validating(object sender, CancelEventArgs e)
         {
-            if (TimeSpan.TryParseExact(WorkTime.Text, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan workTimeValue) && TimeSpan.TryParseExact(RestTime.Text, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan restTimeValue))
+            if (TimeSpan.TryParseExact(WorkTime.Text, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan workTimeValue))
             {
                 TimeSpan maxTime = new TimeSpan(23, 59, 59);
-                if (workTimeValue > maxTime && restTimeValue > maxTime)
-                    WorkTime.Text = maxTime.ToString(@"hh\:mm\:ss"); // Reset the value to the maximum allowed value
+                if (workTimeValue > maxTime)
+                    WorkTime.Text = maxTime.ToString(@"hh\:mm\:ss");
             }
             else
-                WorkTime.Text = string.Empty; // Invalid input, reset to empty string or default value
+                WorkTime.Text = string.Empty;
+        }
+
+        private void RestTime_Validating(object sender, CancelEventArgs e)
+        {
+            if (TimeSpan.TryParseExact(RestTime.Text, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out TimeSpan restTimeValue))
+            {
+                TimeSpan maxTime = new TimeSpan(23, 59, 59);
+                if (restTimeValue > maxTime)
+                    RestTime.Text = maxTime.ToString(@"hh\:mm\:ss");
+            }
+            else
+                WorkTime.Text = string.Empty;
         }
 
         private void AccessDatabase()
         {
-            string pathName = "..\\..\\..\\data\\quotes.json";
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string dataDirectory = Path.GetFullPath(Path.Combine(baseDirectory, "..", "..", "..", "Data"));
+            string pathName = Path.Combine(dataDirectory, "quotes.json");
             try
             {
                 string file = File.ReadAllText(pathName);

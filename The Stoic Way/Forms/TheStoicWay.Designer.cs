@@ -89,6 +89,7 @@
             // 
             resources.ApplyResources(RestTime, "RestTime");
             RestTime.Name = "RestTime";
+            RestTime.Validating += RestTime_Validating;
             // 
             // WorkTimeLabel
             // 
