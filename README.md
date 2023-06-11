@@ -4,20 +4,10 @@
 ## Introduction
 The Stoic Way is a software application aimed at promoting and facilitating the practice of Stoicism; an ancient school of thought that focuses on reason, self-control, and the acceptance of fate. In today's world, the lack of a daily reminder to be in control of our thoughts, reasoning, and situations has become a significant problem, as it has been replaced with self-centered pleasure-seeking. The Stoic Way aims to address this issue by providing a tool for individuals to incorporate Stoic principles into their daily lives. The Stoic Way is a quote of the day applicaton that also doubles as a Pomodoro Timer application for productivitiy!
 
-## Current State of Technology
-The development of The Stoic Way utilizes the following technologies:
+## Pre-requisites
+Before downloading The Stoic Way, you must have ASP.NET Core Runtime Framework Version 7.0. Click [here](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) if you don't have it yet. Depending on your machine platform, download the appropriate installer.  
 
-- **Windows Forms GUI Framework**: The graphical user interface (GUI) of the application is built using the Windows Forms framework, which provides a user-friendly interface for interacting with the software.
-
-- **C# Programming Language**: The application is developed using the C# programming language, which allows for efficient and reliable code implementation.
-
-- **Newtonsoft.Json**: This library is used for handling JSON data, enabling efficient storage and retrieval of application settings and data.
-
-- **WiX Toolset v3.11**: An installer toolset is used to package and distribute The Stoic Way application, making it easier for users to install and set up the software on their machines.
-
-- **Access to Registry Keys**: The application requires access to the machine's Registry Keys to allow operations at startup.
-
-## Installation and Setup
+## Installation
 To use The Stoic Way, follow these steps:
 
 1. Go to [Releases](https://github.com/PakYouMu/The-Stoic-Way/releases)
