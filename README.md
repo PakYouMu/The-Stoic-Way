@@ -1,4 +1,4 @@
-#The Stoic Way
+# [The Stoic Way](https://github.com/PakYouMu/The-Stoic-Way/assets/115514634/6f346b58-92ae-4c16-b50c-8f9c1ca5ea2f)
 
 
 ## Introduction
