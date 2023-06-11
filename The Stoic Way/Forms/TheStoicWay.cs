@@ -21,6 +21,8 @@ using System.Globalization;
 using System.Timers;
 using System.Runtime.CompilerServices;
 using System.Linq.Expressions;
+using System.Diagnostics;
+using System.Xml.XPath;
 
 namespace The_Stoic_Way
 {
@@ -227,11 +229,19 @@ namespace The_Stoic_Way
 
         private void AccessDatabase()
         {
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            string dataDirectory = Path.GetFullPath(Path.Combine(baseDirectory, "..", "..", "..", "Data"));
-            string pathName = Path.Combine(dataDirectory, "quotes.json");
+            string pathName = string.Empty;
             try
             {
+                if (Debugger.IsAttached)
+                {
+                    string currentDirectory = Environment.CurrentDirectory;
+                    string dataDirectory = Path.GetFullPath(Path.Combine(currentDirectory, "..", "..", "..", "Data"));
+                    pathName = Path.Combine(dataDirectory, "quotes.json");
+                }
+                else
+                    pathName = Path.Combine(Directory.GetCurrentDirectory(), "Data", "quotes.json");
+
+
                 string file = File.ReadAllText(pathName);
                 dynamic quotes = JsonConvert.DeserializeObject<List<Quote>>(file);
                 Random random = new Random();

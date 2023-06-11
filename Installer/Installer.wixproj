@@ -1,5 +1,0 @@
-﻿<Project Sdk="WixToolset.Sdk/4.0.0">
-  <ItemGroup>
-    <ProjectReference Include="..\The Stoic Way\The Stoic Way.csproj" />
-  </ItemGroup>
-</Project>

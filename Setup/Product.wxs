@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*"
+			 Name="Setup"
+			 Language="1033"
+			 Version="1.0.0.0"
+			 Manufacturer="PakYouMu"
+			 UpgradeCode="9ee7f5df-5017-4607-9b73-5c2c6d516663">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of The Stoic Way is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="Setup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="The Stoic Way">
+					<Directory Id="en" Name="en" />
+					<Directory Id="Data" Name="Data" />
+				</Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents">
+			<Component Id="PublishedFiles" Guid="c958f70e-1c8c-4a38-8cae-402a15ee1636" Directory="INSTALLFOLDER">
+				<File Id="File1" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\Newtonsoft.Json.dll" />
+
+				<File Id="File2" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.deps.json" />
+
+				<File Id="File3" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.dll" />
+
+				<File Id="File4" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.exe" />
+
+				<File Id="File5" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.pdb" />
+
+				<File Id="File6" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.runtimeconfig.json" />
+			</Component>
+
+			<Component Id="SubFolder1Files" Guid="198dc241-6248-42ac-8ce7-a59d1990f3d5" Directory="en">
+				<File Id="EnFile1" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\en\The Stoic Way.resources.dll" />
+			</Component>
+
+			<Component Id="SubFolder2Files" Guid="ed191018-3063-4371-a86b-faf7d6f8644a" Directory="Data">
+				<File Id="DataFile1" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\Data\quotes.json" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
