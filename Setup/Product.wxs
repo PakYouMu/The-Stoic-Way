@@ -10,7 +10,6 @@
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of The Stoic Way is already installed." />
 		<MediaTemplate EmbedCab="yes"/>
-		<!-- <Media Id="2" Cabinet="cab1.cab" EmbedCab="yes"/> -->
 
 		<Feature Id="ProductFeature" Title="Setup" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
@@ -50,6 +49,7 @@
 
 			<Component Id="SubFolder2Files" Guid="cf8e2c59-b300-4193-a992-20f7902bf8c5" Directory="Data">
 				<File Id="DataFile1" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\Data\quotes.json" />
+				<File Id="DataFile2" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\Data\User Manual.pdf" />
 			</Component>
 		</ComponentGroup>
 	</Fragment>

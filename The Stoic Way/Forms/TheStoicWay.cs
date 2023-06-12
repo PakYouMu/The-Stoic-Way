@@ -205,7 +205,23 @@ namespace The_Stoic_Way
 
         private void Logo_Click(object sender, EventArgs e)
         {
-            //Redirect to documentation files
+            string pathName = "";
+            if (Debugger.IsAttached)
+            {
+                string currentDirectory = Environment.CurrentDirectory;
+                string dataDirectory = Path.GetFullPath(Path.Combine(currentDirectory, "..", "..", "..", "Data"));
+                pathName = Path.Combine(dataDirectory, "User Manual.pdf");
+            }
+            else
+                pathName = Path.Combine(Directory.GetCurrentDirectory(), "Data", "User Manual.pdf");
+
+            ProcessStartInfo userManual = new ProcessStartInfo
+            {
+                FileName = pathName,
+                UseShellExecute = true
+            };
+
+            Process.Start(userManual);
         }
 
         private void WorkTime_Validating(object sender, CancelEventArgs e)
