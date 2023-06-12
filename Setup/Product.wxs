@@ -30,13 +30,13 @@
 	<Fragment>
 		<ComponentGroup Id="ProductComponents">
 			<Component Id="PublishedFiles" Guid="fa7fb4c4-e0d3-4a86-887c-1e86f4d2856b" Directory="INSTALLFOLDER">
-				<File Id="File1" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\Newtonsoft.Json.dll" />
+				<File Id="File1" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.exe" />
+				
+				<File Id="File2" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\Newtonsoft.Json.dll" />
 
-				<File Id="File2" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.deps.json" />
+				<File Id="File3" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.deps.json" />
 
-				<File Id="File3" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.dll" />
-
-				<File Id="File4" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.exe" />
+				<File Id="File4" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.dll" />
 
 				<File Id="File5" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\bin\Release\net7.0-windows\publish\The Stoic Way.pdb" />
 
@@ -51,6 +51,9 @@
 				<File Id="DataFile1" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\Data\quotes.json" />
 				<File Id="DataFile2" Source="C:\Users\youmu\source\repos\PakYouMu\The-Stoic-Way\The Stoic Way\Data\User Manual.pdf" />
 			</Component>
+			
 		</ComponentGroup>
+		
 	</Fragment>
+
 </Wix>

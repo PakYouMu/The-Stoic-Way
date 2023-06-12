@@ -10,8 +10,9 @@ namespace The_Stoic_Way.Classes
 
         public static void AddToAutostart()
         {
+            string exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
             RegistryKey startupKey = Registry.CurrentUser.OpenSubKey(RunKey, true);
-            startupKey.SetValue(AppName, System.Reflection.Assembly.GetExecutingAssembly().Location);
+            startupKey.SetValue(AppName, exePath);
             startupKey.Close();
         }
 
