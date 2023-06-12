@@ -6,35 +6,6 @@ using System.Reflection;
 
 namespace The_Stoic_Way.Classes
 {
-    public class ScheduledTaskManager
-    {
-        private const string TaskName = "The Stoic Way";
-        private const string Description = "Start The Stoic Way on system startup";
-
-        public static void CreateTask()
-        {
-            using (TaskService taskService = new TaskService())
-            {
-                TaskDefinition taskDefinition = taskService.NewTask();
-                taskDefinition.RegistrationInfo.Description = Description;
-
-                taskDefinition.Triggers.Add(new BootTrigger());
-                string appPath = @"C:\Program Files (x86)\The Stoic Way\The Stoic Way.exe";
-                taskDefinition.Actions.Add(new ExecAction(appPath));
-
-                taskService.RootFolder.RegisterTaskDefinition(TaskName, taskDefinition);
-            }
-        }
-
-        public static void RemoveTask()
-        {
-            using (TaskService taskService = new TaskService())
-            {
-                taskService.RootFolder.DeleteTask(TaskName, false);
-            }
-        }
-    }
-
     public class AutostartManager
     {
         private const string AppName = "The Stoic Way";
@@ -42,17 +13,19 @@ namespace The_Stoic_Way.Classes
 
         public static void AddToAutostart()
         {
-            string exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
-            RegistryKey startupKey = Registry.CurrentUser.OpenSubKey(RunKey, true);
-            startupKey.SetValue(AppName, exePath);
-            startupKey.Close();
+            using (RegistryKey startupKey = Registry.CurrentUser.OpenSubKey(RunKey, true))
+            {
+                string exePath = Assembly.GetEntryAssembly().Location;
+                startupKey.SetValue(AppName, exePath);
+            }
         }
 
         public static void RemoveFromAutostart()
         {
-            RegistryKey startupKey = Registry.CurrentUser.OpenSubKey(RunKey, true);
-            startupKey.DeleteValue(AppName, false);
-            startupKey.Close();
+            using (RegistryKey startupKey = Registry.CurrentUser.OpenSubKey(RunKey, true))
+            {
+                startupKey.DeleteValue(AppName, false);
+            }
         }
     }
 
@@ -69,7 +42,6 @@ namespace The_Stoic_Way.Classes
 
             // Add to autostart
             AutostartManager.AddToAutostart();
-            ScheduledTaskManager.CreateTask();
 
             // Remove from autostart
             // AutostartManager.RemoveFromAutostart();
