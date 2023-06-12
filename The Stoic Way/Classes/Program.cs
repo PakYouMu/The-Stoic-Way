@@ -19,7 +19,8 @@ namespace The_Stoic_Way.Classes
                 taskDefinition.RegistrationInfo.Description = Description;
 
                 taskDefinition.Triggers.Add(new BootTrigger());
-                taskDefinition.Actions.Add(new ExecAction(Assembly.GetExecutingAssembly().Location));
+                string appPath = @"C:\Program Files (x86)\The Stoic Way\The Stoic Way.exe";
+                taskDefinition.Actions.Add(new ExecAction(appPath));
 
                 taskService.RootFolder.RegisterTaskDefinition(TaskName, taskDefinition);
             }
