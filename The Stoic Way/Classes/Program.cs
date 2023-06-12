@@ -19,12 +19,7 @@ namespace The_Stoic_Way.Classes
                 taskDefinition.RegistrationInfo.Description = Description;
 
                 taskDefinition.Triggers.Add(new BootTrigger());
-
-                string executablePath = Assembly.GetExecutingAssembly().Location;
-                string workingDirectory = Path.GetDirectoryName(executablePath);
-                string quotesFilePath = Path.Combine(workingDirectory, "Data", "quotes.json");
-
-                taskDefinition.Actions.Add(new ExecAction(executablePath, workingDirectory));
+                taskDefinition.Actions.Add(new ExecAction(Assembly.GetExecutingAssembly().Location));
 
                 taskService.RootFolder.RegisterTaskDefinition(TaskName, taskDefinition);
             }
