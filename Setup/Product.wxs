@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 	<Product Id="*"
-			 Name="Setup"
+			 Name="The Stoic Way"
 			 Language="1033"
 			 Version="1.0.0.0"
 			 Manufacturer="PakYouMu"
@@ -11,7 +11,7 @@
 		<MajorUpgrade DowngradeErrorMessage="A newer version of The Stoic Way is already installed." />
 		<MediaTemplate EmbedCab="yes"/>
 
-		<Feature Id="ProductFeature" Title="Setup" Level="1">
+		<Feature Id="ProductFeature" Title="The Stoic Way" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 		</Feature>
 	</Product>

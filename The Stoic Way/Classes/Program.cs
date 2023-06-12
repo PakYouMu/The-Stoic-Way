@@ -1,8 +1,44 @@
 using System.Timers;
 using Microsoft.Win32;
+using Microsoft.Win32.TaskScheduler;
+using System.Reflection;
+
 
 namespace The_Stoic_Way.Classes
 {
+    public class ScheduledTaskManager
+    {
+        private const string TaskName = "The Stoic Way";
+        private const string Description = "Start The Stoic Way on system startup";
+
+        public static void CreateTask()
+        {
+            using (TaskService taskService = new TaskService())
+            {
+                TaskDefinition taskDefinition = taskService.NewTask();
+                taskDefinition.RegistrationInfo.Description = Description;
+
+                taskDefinition.Triggers.Add(new BootTrigger());
+
+                string executablePath = Assembly.GetExecutingAssembly().Location;
+                string workingDirectory = Path.GetDirectoryName(executablePath);
+                string quotesFilePath = Path.Combine(workingDirectory, "Data", "quotes.json");
+
+                taskDefinition.Actions.Add(new ExecAction(executablePath, workingDirectory));
+
+                taskService.RootFolder.RegisterTaskDefinition(TaskName, taskDefinition);
+            }
+        }
+
+        public static void RemoveTask()
+        {
+            using (TaskService taskService = new TaskService())
+            {
+                taskService.RootFolder.DeleteTask(TaskName, false);
+            }
+        }
+    }
+
     public class AutostartManager
     {
         private const string AppName = "The Stoic Way";
@@ -37,6 +73,7 @@ namespace The_Stoic_Way.Classes
 
             // Add to autostart
             AutostartManager.AddToAutostart();
+            ScheduledTaskManager.CreateTask();
 
             // Remove from autostart
             // AutostartManager.RemoveFromAutostart();
