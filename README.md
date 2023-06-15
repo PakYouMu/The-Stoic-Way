@@ -29,4 +29,4 @@ If you want to contribute to The Stoic Way project, please follow these steps:
 ## Contact
 For any inquiries or feedback regarding The Stoic Way, please contact me at 21-1-00398@vsu.edu.ph
 
-https://img.shields.io/eclipse-marketplace/l/GPLv3?color=blue&label=License&logo=GPLV3&logoColor=yes&style=for-the-badge
+[!.License: GPL v3](https://www.gnu.org/licenses/gpl-3.0)
